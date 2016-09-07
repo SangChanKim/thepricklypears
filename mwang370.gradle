@@ -1,0 +1,9 @@
+defaultTasks	"jar"
+
+apply plugin: 'java'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version , 'Main-Class' : 'AntLabMain'
+    }
+}
