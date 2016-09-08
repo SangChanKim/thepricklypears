@@ -44,7 +44,7 @@ public class Person3 {
 	private String calc(String input) {
 	  //Person 3 put your implementation here
 	  String reversed = "";
-	  int index = input.length();
+	  int index = input.length() - 1;
 	  while (index >= 0) {
 	  	reversed += input.substring(index, index + 1);
 	 	index--;
