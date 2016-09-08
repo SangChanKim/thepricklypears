@@ -32,9 +32,9 @@ public class Person1 {
 	private String calc(String input) {
 	  //Person 1 put your implementation here
 	  String total = "";
-	  total.concat(input.substring(2));
-	  total.concat(input.substring(0,2));
-
+	  
+          total += input.substring(2);
+          total += input.substring(0,2);
 	  return total;
 	}
 	
