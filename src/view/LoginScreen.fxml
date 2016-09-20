@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Clean Water Crowd Sourcing" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane id="loginPane" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Login" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
     <content>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="400.0">
+        <AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="400.0">
             <children>
-                <TextField layoutX="185.0" layoutY="52.0" />
-                <TextField layoutX="185.0" layoutY="111.0" />
-                <Button id="loginButton" layoutX="167.0" layoutY="181.0" mnemonicParsing="false" text="Login">
+                <TextField id="usernameTextField" fx:id="usernameTextField" layoutX="185.0" layoutY="52.0" />
+                <TextField id="passwordTextField" fx:id="passwordTextField" layoutX="185.0" layoutY="111.0" />
+                <Button id="loginButton" fx:id="loginButton" layoutX="167.0" layoutY="181.0" mnemonicParsing="false" text="Login">
                     <font>
                         <Font name="Calibri" size="18.0" />
                     </font>

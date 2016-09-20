@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Registration" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Registration" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+    <AnchorPane id="registrationPane" fx:id="registrationPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <Button layoutX="155.0" layoutY="210.0" mnemonicParsing="false" text="Register">
+            <Button id="registerButton" fx:id="registerButton" layoutX="155.0" layoutY="210.0" mnemonicParsing="false" text="Register">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <TextField layoutX="184.0" layoutY="57.0" />
-            <TextField layoutX="184.0" layoutY="111.0" />
+            <TextField id="usernameTextField" fx:id="usernameTextField" layoutX="184.0" layoutY="57.0" />
+            <TextField id="passwordTextField" fx:id="passwordTextField" layoutX="184.0" layoutY="111.0" />
             <Label layoutX="89.0" layoutY="56.0" text="Username:">
                <font>
                   <Font size="18.0" />
@@ -33,7 +33,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="184.0" layoutY="155.0" />
+            <TextField id="confirmPasswordTextField" fx:id="confirmPasswordTextField" layoutX="184.0" layoutY="155.0" />
             <Label layoutX="25.0" layoutY="154.0" text="Confirm Password:">
                <font>
                   <Font size="18.0" />

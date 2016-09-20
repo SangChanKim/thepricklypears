@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Clean Water Crowd Sourcing" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Clean Water Crowd Sourcing" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+    <AnchorPane id="welcomePane" fx:id="welcomePane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <Button id="enterLoginButton" layoutX="51.0" layoutY="112.0" mnemonicParsing="false" text="Login">
+            <Button id="enterLoginButton" fx:id="enterLoginButton" layoutX="51.0" layoutY="112.0" mnemonicParsing="false" text="Login">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button id="registrationButton" layoutX="213.0" layoutY="112.0" mnemonicParsing="false" text="Register">
+            <Button id="enterRegistrationButton" fx:id="enterRegistrationButton" layoutX="213.0" layoutY="112.0" mnemonicParsing="false" text="Register">
                <font>
                   <Font size="24.0" />
                </font>
