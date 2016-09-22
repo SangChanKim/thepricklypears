@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class MainFXApplication extends Application {
     /** the main container for the application window */
     private Stage mainScreen;
 
-    private TitledPane rootLayout;
+    private BorderPane rootLayout;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -48,7 +49,7 @@ public class MainFXApplication extends Application {
             controller.setMainApp(this);
 
             // Set the Main App title
-            mainScreen.setTitle("Course Registration");
+            mainScreen.setTitle("Clean Water Crowd Sourcing");
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -68,9 +69,9 @@ public class MainFXApplication extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainFXApplication.class.getResource("../view/WelcomeScreen.fxml"));
 
-            TitledPane welcomeScreen = loader.load();
+            BorderPane welcomeScreen = loader.load();
 
-            rootLayout.setContent(welcomeScreen);
+            rootLayout.setCenter(welcomeScreen);
 
             WelcomeScreenController controller = loader.getController();
             controller.setMainApp(this);
@@ -85,9 +86,9 @@ public class MainFXApplication extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainFXApplication.class.getResource("../view/LoginScreen.fxml"));
 
-            TitledPane loginScreen = loader.load();
+            BorderPane loginScreen = loader.load();
 
-            rootLayout.setContent(loginScreen);
+            rootLayout.setCenter(loginScreen);
 
             LoginScreenController controller = loader.getController();
             controller.setMainApp(this);
@@ -102,9 +103,9 @@ public class MainFXApplication extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainFXApplication.class.getResource("../view/HomeScreen.fxml"));
 
-            TitledPane homeScreen = loader.load();
+            BorderPane homeScreen = loader.load();
 
-            rootLayout.setContent(homeScreen);
+            rootLayout.setCenter(homeScreen);
 
             HomeScreenController controller = loader.getController();
             controller.setMainApp(this);

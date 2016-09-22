@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Home Screen" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
-  <content>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
+  <center>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
             <Label layoutX="87.0" layoutY="34.0" text="Welcome to the application!">
@@ -17,5 +18,5 @@
             </Label>
             <Button fx:id="logoutButton" layoutX="172.0" layoutY="125.0" mnemonicParsing="false" text="Logout" onAction="#onLogoutPressed"/>
          </children></AnchorPane>
-  </content>
-</TitledPane>
+  </center>
+</BorderPane>
