@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane id="loginPane" fx:controller="controller.LoginScreenController" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Login" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<TitledPane id="loginPane" animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" text="Login" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginScreenController">
     <content>
         <AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="400.0">
             <children>
                 <TextField id="usernameTextField" fx:id="usernameTextField" layoutX="185.0" layoutY="52.0" />
                 <TextField id="passwordTextField" fx:id="passwordTextField" layoutX="185.0" layoutY="111.0" />
-                <Button id="loginButton" fx:id="loginButton" layoutX="167.0" layoutY="181.0" mnemonicParsing="false" text="Login">
+                <Button id="loginButton" fx:id="loginButton" layoutX="228.0" layoutY="182.0" mnemonicParsing="false" text="Login" onAction="#onLoginPressed">
                     <font>
                         <Font name="Calibri" size="18.0" />
                     </font>
@@ -28,6 +28,11 @@
                         <Font name="Calibri" size="24.0" />
                     </font>
                 </Label>
+            <Button fx:id="cancelButton" layoutX="119.0" layoutY="182.0" mnemonicParsing="false" text="Cancel" onAction="#onCancelPressed">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Button>
             </children></AnchorPane>
     </content>
 </TitledPane>

@@ -1,5 +1,6 @@
 package fxapp;
 
+import controller.HomeScreenController;
 import controller.MainScreenController;
 import controller.LoginScreenController;
 import controller.WelcomeScreenController;
@@ -62,19 +63,19 @@ public class MainFXApplication extends Application {
         }
     }
 
-    private void showWelcomeScreen() {
+    public void showWelcomeScreen() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainFXApplication.class.getResource("../view/WelcomeScreen.fxml"));
 
-            TitledPane loginScreen = loader.load();
+            TitledPane welcomeScreen = loader.load();
 
-            rootLayout.setContent(loginScreen);
+            rootLayout.setContent(welcomeScreen);
 
             WelcomeScreenController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for LoginScreen!!");
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for WelcomeScreen!!");
             e.printStackTrace();
         }
     }
@@ -92,6 +93,23 @@ public class MainFXApplication extends Application {
             controller.setMainApp(this);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for LoginScreen!!");
+            e.printStackTrace();
+        }
+    }
+
+    public void showHomeScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/HomeScreen.fxml"));
+
+            TitledPane homeScreen = loader.load();
+
+            rootLayout.setContent(homeScreen);
+
+            HomeScreenController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for HomeScreen!!");
             e.printStackTrace();
         }
     }
