@@ -4,6 +4,7 @@ import fxapp.MainFXApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -120,8 +121,12 @@ public class RegistrationScreenController {
 
         } else {
             // Show on the UI that passwords are not equal
-            // TODO
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration Failed");
+            alert.setHeaderText("Passwords are not the same");
+            alert.setContentText("Please Try Again");
 
+            alert.showAndWait();
             // Clear the password/confirm password text fields
             passwordTextField.clear();
             confirmPasswordTextField.clear();
