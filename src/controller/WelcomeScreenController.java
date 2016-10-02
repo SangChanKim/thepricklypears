@@ -20,6 +20,9 @@ public class WelcomeScreenController {
         mainApplication.showLoginScreen();
     }
 
+    @FXML
+    public void onRegisterPressed() {mainApplication.showRegistrationScreen();}
+
     public void setMainApp(MainFXApplication mainFXApplication) {
         mainApplication = mainFXApplication;
     }

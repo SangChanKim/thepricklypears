@@ -4,6 +4,7 @@ import controller.HomeScreenController;
 import controller.MainScreenController;
 import controller.LoginScreenController;
 import controller.WelcomeScreenController;
+import controller.RegistrationScreenController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -115,8 +116,26 @@ public class MainFXApplication extends Application {
         }
     }
 
+    public void showRegistrationScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/RegistrationScreen.fxml"));
+
+            BorderPane registerScreen = loader.load();
+
+            rootLayout.setCenter(registerScreen);
+
+            RegistrationScreenController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for HomeScreen!!");
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);
     }
+
+
 }

@@ -52,21 +52,25 @@ public class RegistrationScreenController {
     @FXML
     private TextField phoneNumberTextField;
 
-
-
-    /**
-     * called automatically after load
-     */
-    @FXML
-    private void initialize() {
-        UserType[] types = UserType.values();
-        userTypeComboBox.getItems().addAll(types);
-        userTypeComboBox.setValue(types[0]);
-
-        UserTitle[] titles = UserTitle.values();
-        titleComboBox.getItems().addAll(titles);
-        titleComboBox.setValue(types[0]);
+    public void setMainApp (MainFXApplication main) {
+        mainApplication = main;
     }
+
+
+    // TODO IMPLEMENT USER TYPE AND TITLE
+//    /**
+//     * called automatically after load
+//     */
+//    @FXML
+//    private void initialize() {
+//        UserType[] types = UserType.values();
+//        userTypeComboBox.getItems().addAll(types);
+//        userTypeComboBox.setValue(types[0]);
+//
+//        UserTitle[] titles = UserTitle.values();
+//        titleComboBox.getItems().addAll(titles);
+//        titleComboBox.setValue(types[0]);
+//    }
 
 
     /**
@@ -95,17 +99,22 @@ public class RegistrationScreenController {
             String emailAddress = emailAddressTextField.getText();
             String homeAddress = homeAddressTextField.getText();
             String phoneNumber = phoneNumberTextField.getText();
-            UserType type = UserType.valueOf((String)userTypeComboBox.getSelectionModel().getSelectedItem());
-            UserTitle title = UserTitle.valueOf((String)titleComboBox.getSelectionModel().getSelectedItem());
+
+            // TODO IMPLEMENT USER TYPE AND TITLE
+            //UserType type = UserType.valueOf((String)userTypeComboBox.getSelectionModel().getSelectedItem());
+            //UserTitle title = UserTitle.valueOf((String)titleComboBox.getSelectionModel().getSelectedItem());
 
             // Set the attributes
             User newUser = new User(username, password);
-            newUser.setName(username);
+            newUser.setUsername(username);
+            newUser.setName(name);
             newUser.setEmailAddress(emailAddress);
             newUser.setHomeAddress(homeAddress);
             newUser.setPhoneNumber(phoneNumber);
-            newUser.setUserType(type);
-            newUser.setUserTitle(title);
+
+            // TODO IMPLEMENT USER TYPE AND TITLE
+            //newUser.setUserType(type);
+            //newUser.setUserTitle(title);
 
             mainApplication.showHomeScreen();
 
