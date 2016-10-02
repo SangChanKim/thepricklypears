@@ -128,7 +128,7 @@ public class MainFXApplication extends Application {
             RegistrationScreenController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for HomeScreen!!");
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for RegistrationScreen!!");
             e.printStackTrace();
         }
     }

@@ -2,21 +2,21 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
   <center>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <Label layoutX="87.0" layoutY="34.0" text="Welcome to the application!">
+            <Label layoutX="88.0" layoutY="50.0" text="Welcome to the application!">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="logoutButton" layoutX="172.0" layoutY="125.0" mnemonicParsing="false" text="Logout" onAction="#onLogoutPressed"/>
+            <Button fx:id="logoutButton" alignment="TOP_RIGHT" layoutX="318.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLogoutPressed" text="Logout" />
+            <Button fx:id="editButton" layoutX="168.0" layoutY="165.0" mnemonicParsing="false" onAction="#onEditPressed" text="Button" />
          </children></AnchorPane>
   </center>
 </BorderPane>

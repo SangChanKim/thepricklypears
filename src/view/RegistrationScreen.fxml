@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationScreenController">
   <center>
-    <AnchorPane id="registrationPane" fx:id="registrationPane">
+    <AnchorPane id="registrationPane" fx:id="registrationPane" prefHeight="700.0" prefWidth="400.0">
          <children>
-            <Button id="registerButton" fx:id="registerButton" layoutX="248.0" layoutY="464.0" mnemonicParsing="false" onAction="#onRegisterPressed" text="Register">
+            <Button id="registerButton" fx:id="registerButton" layoutX="248.0" layoutY="484.0" mnemonicParsing="false" onAction="#onRegisterPressed" text="Register">
                <font>
                   <Font size="18.0" />
                </font>
@@ -39,35 +40,47 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="119.0" layoutY="202.0" text="Name:">
+            <Label layoutX="118.0" layoutY="290.0" text="Name:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="121.0" layoutY="239.0" text="Email:">
+            <Label layoutX="123.0" layoutY="331.0" text="Email:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="100.0" layoutY="279.0" text="Address:">
+            <Label layoutX="100.0" layoutY="371.0" text="Address:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="315.0" text="Phone Number:">
+            <Label layoutX="45.0" layoutY="411.0" text="Phone Number:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="nameTextField" layoutX="184.0" layoutY="203.0" />
-            <TextField fx:id="emailAddressTextField" layoutX="184.0" layoutY="240.0" />
-            <TextField fx:id="homeAddressTextField" layoutX="184.0" layoutY="280.0" />
-            <TextField fx:id="phoneNumberTextField" layoutX="184.0" layoutY="316.0" />
-            <Button layoutX="75.0" layoutY="464.0" mnemonicParsing="false" onAction="#onCancelPressed" text="Cancel">
+            <TextField fx:id="nameTextField" layoutX="184.0" layoutY="289.0" />
+            <TextField fx:id="emailAddressTextField" layoutX="184.0" layoutY="329.0" />
+            <TextField fx:id="homeAddressTextField" layoutX="184.0" layoutY="369.0" />
+            <TextField fx:id="phoneNumberTextField" layoutX="184.0" layoutY="409.0" />
+            <Button layoutX="75.0" layoutY="484.0" mnemonicParsing="false" onAction="#onCancelPressed" text="Cancel">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
+            <ComboBox fx:id="titleComboBox" layoutX="184.0" layoutY="244.0" prefWidth="150.0" />
+            <Label layoutX="133.0" layoutY="246.0" text="Title:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="userTypeComboBox" layoutX="184.0" layoutY="198.0" prefWidth="150.0" />
+            <Label layoutX="88.0" layoutY="200.0" text="User Type:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </center>
 </BorderPane>
