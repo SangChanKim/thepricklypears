@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationScreenController">
   <center>
     <AnchorPane id="registrationPane" fx:id="registrationPane" prefHeight="700.0" prefWidth="400.0">
@@ -18,7 +19,7 @@
                </font>
             </Button>
             <TextField id="usernameTextField" fx:id="usernameTextField" layoutX="184.0" layoutY="57.0" />
-            <TextField id="passwordTextField" fx:id="passwordTextField" layoutX="184.0" layoutY="111.0" />
+            <PasswordField id="passwordTextField" fx:id="passwordTextField" layoutX="184.0" layoutY="111.0" />
             <Label layoutX="89.0" layoutY="56.0" text="Username:">
                <font>
                   <Font size="18.0" />
@@ -34,7 +35,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField id="confirmPasswordTextField" fx:id="confirmPasswordTextField" layoutX="184.0" layoutY="155.0" />
+            <PasswordField id="confirmPasswordTextField" fx:id="confirmPasswordTextField" layoutX="184.0" layoutY="155.0" />
             <Label layoutX="25.0" layoutY="154.0" text="Confirm Password:">
                <font>
                   <Font size="18.0" />

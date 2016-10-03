@@ -39,10 +39,10 @@ public class RegistrationScreenController {
     private TextField nameTextField;
 
     @FXML
-    private ComboBox userTypeComboBox;
+    private ComboBox<UserType> userTypeComboBox;
 
     @FXML
-    private ComboBox titleComboBox;
+    private ComboBox<UserTitle> titleComboBox;
 
     @FXML
     private TextField emailAddressTextField;
@@ -58,20 +58,19 @@ public class RegistrationScreenController {
     }
 
 
-    // TODO IMPLEMENT USER TYPE AND TITLE
-//    /**
-//     * called automatically after load
-//     */
-//    @FXML
-//    private void initialize() {
-//        UserType[] types = UserType.values();
-//        userTypeComboBox.getItems().addAll(types);
-//        userTypeComboBox.setValue(types[0]);
-//
-//        UserTitle[] titles = UserTitle.values();
-//        titleComboBox.getItems().addAll(titles);
-//        titleComboBox.setValue(types[0]);
-//    }
+    /**
+     * called automatically after load
+     */
+    @FXML
+    private void initialize() {
+        UserType[] types = UserType.values();
+        userTypeComboBox.getItems().addAll(types);
+        userTypeComboBox.setValue(types[0]);
+
+        UserTitle[] titles = UserTitle.values();
+        titleComboBox.getItems().addAll(titles);
+        titleComboBox.setValue(titles[0]);
+    }
 
 
     /**
@@ -101,9 +100,8 @@ public class RegistrationScreenController {
             String homeAddress = homeAddressTextField.getText();
             String phoneNumber = phoneNumberTextField.getText();
 
-            // TODO IMPLEMENT USER TYPE AND TITLE
-            //UserType type = UserType.valueOf((String)userTypeComboBox.getSelectionModel().getSelectedItem());
-            //UserTitle title = UserTitle.valueOf((String)titleComboBox.getSelectionModel().getSelectedItem());
+            UserType type = userTypeComboBox.getSelectionModel().getSelectedItem();
+            UserTitle title = titleComboBox.getSelectionModel().getSelectedItem();
 
             // Set the attributes
             User newUser = new User(username, password);
@@ -113,11 +111,11 @@ public class RegistrationScreenController {
             newUser.setHomeAddress(homeAddress);
             newUser.setPhoneNumber(phoneNumber);
 
-            // TODO IMPLEMENT USER TYPE AND TITLE
-            //newUser.setUserType(type);
-            //newUser.setUserTitle(title);
+            newUser.setUserType(type);
+            newUser.setUserTitle(title);
 
-            mainApplication.showHomeScreen();
+            mainApplication.addAuthUser(newUser);
+            mainApplication.showHomeScreen(newUser.getUsername());
 
         } else {
             // Show on the UI that passwords are not equal

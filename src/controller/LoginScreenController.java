@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.User;
 
 public class LoginScreenController {
 
@@ -15,6 +16,9 @@ public class LoginScreenController {
         mainApplication = mainFXApplication;
     }
 
+    /*  **********************
+            References to the FXML widgets in the .fxml file
+        */
     @FXML
     private Button cancelButton;
 
@@ -24,20 +28,25 @@ public class LoginScreenController {
     @FXML
     private TextField passwordTextField;
 
+    /**
+     * called when user clicks Cancel
+     */
     @FXML
     public void onCancelPressed() {
             mainApplication.showWelcomeScreen();
     }
 
-
+    /**
+     * called when user clicks login
+     */
     @FXML
     public void onLoginPressed() {
-        String username = "prickly";
-        String password = "pear";
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
 
-        if (usernameTextField.getText().equals(username) && passwordTextField.getText().equals(password)) {
+        if (validate(username, password)) {
             // bring user to application
-            mainApplication.showHomeScreen();
+            mainApplication.showHomeScreen(username);
         } else {
             // bring up error message
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -47,6 +56,22 @@ public class LoginScreenController {
 
             alert.showAndWait();
         }
+    }
+
+    /**
+     * checks if user input is valid
+     * @param user the entered username
+     * @param pass the entered password
+     * @return if information is valid or not
+     */
+    private boolean validate(String user, String pass) {
+        boolean valid = false;
+        for (User auth : mainApplication.getAuthUsers()) {
+            if (auth.getUsername().equals(user) && auth.getPassword().equals(pass)) {
+                valid = true;
+            }
+        }
+        return valid;
     }
 
 }

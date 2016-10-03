@@ -7,8 +7,8 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
-  <center>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+   <left>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="88.0" layoutY="50.0" text="Welcome to the application!">
                <font>
@@ -16,7 +16,13 @@
                </font>
             </Label>
             <Button fx:id="logoutButton" alignment="TOP_RIGHT" layoutX="318.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLogoutPressed" text="Logout" />
-            <Button fx:id="editButton" layoutX="168.0" layoutY="165.0" mnemonicParsing="false" onAction="#onEditPressed" text="Button" />
+            <Button fx:id="editButton" layoutX="294.0" layoutY="255.0" mnemonicParsing="false" onAction="#onEditPressed" text="Edit Profile" />
+            <Label fx:id="usernameLabel" layoutX="71.0" layoutY="89.0" text="Label" />
+            <Label fx:id="nameLabel" layoutX="71.0" layoutY="110.0" text="Label" />
+            <Label fx:id="emailLabel" layoutX="71.0" layoutY="131.0" text="Label" />
+            <Label fx:id="homeAddressLabel" layoutX="71.0" layoutY="152.0" text="Label" />
+            <Label fx:id="userTypeLabel" layoutX="71.0" layoutY="173.0" text="Label" />
+            <Label fx:id="userTitleLabel" layoutX="71.0" layoutY="194.0" text="Label" />
          </children></AnchorPane>
-  </center>
+   </left>
 </BorderPane>
