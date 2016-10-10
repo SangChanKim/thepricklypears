@@ -198,6 +198,42 @@ public class MainFXApplication extends Application {
         }
     }
 
+    public void showCreateWaterReportScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/CreateWaterReportScreen.fxml"));
+
+            BorderPane CreateWaterReportScreen = loader.load();
+
+            rootLayout.setCenter(CreateWaterReportScreen);
+
+            CreateWaterReportController controller = loader.getController();
+            controller.setUser(currUser);
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for CreateWaterReportScreen!!");
+            e.printStackTrace();
+        }
+    }
+
+    public void showAllReportsScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/ViewAllReportsScreen.fxml"));
+
+            BorderPane ViewAllReportsScreen = loader.load();
+
+            rootLayout.setCenter(ViewAllReportsScreen);
+
+            ViewAllReportsController controller = loader.getController();
+            controller.setUser(currUser);
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewAllReportsScreen!!");
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

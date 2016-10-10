@@ -42,6 +42,12 @@ public class HomeScreenController {
     @FXML
     private Button editButton;
 
+    @FXML
+    private Button submitReportButton;
+
+    @FXML
+    private Button viewAllReportsButton;
+
     public void setMainApp (MainFXApplication main) {
         mainApplication = main;
     }
@@ -60,6 +66,22 @@ public class HomeScreenController {
     @FXML
     public void onEditPressed() {
         mainApplication.showEditScreen();
+    }
+
+    /**
+     * called when the user clicks Submit Report
+     */
+    @FXML
+    public void onSubmitReportPressed() {
+        mainApplication.showCreateWaterReportScreen();
+    }
+
+    /**
+     * called when the user clicks Submit Report
+     */
+    @FXML
+    public void onViewAllReportsPressed() {
+        mainApplication.showAllReportsScreen();
     }
 
     /**

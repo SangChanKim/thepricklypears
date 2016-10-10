@@ -1,28 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
+   <top>
+      <Label text="Welcome to Clean&#10;Water Crowdsourcing" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </top>
    <left>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="88.0" layoutY="50.0" text="Welcome to the application!">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="logoutButton" alignment="TOP_RIGHT" layoutX="318.0" layoutY="14.0" mnemonicParsing="false" onAction="#onLogoutPressed" text="Logout" />
-            <Button fx:id="editButton" layoutX="294.0" layoutY="255.0" mnemonicParsing="false" onAction="#onEditPressed" text="Edit Profile" />
-            <Label fx:id="usernameLabel" layoutX="71.0" layoutY="89.0" text="Label" />
-            <Label fx:id="nameLabel" layoutX="71.0" layoutY="110.0" text="Label" />
-            <Label fx:id="emailLabel" layoutX="71.0" layoutY="131.0" text="Label" />
-            <Label fx:id="homeAddressLabel" layoutX="71.0" layoutY="152.0" text="Label" />
-            <Label fx:id="userTypeLabel" layoutX="71.0" layoutY="173.0" text="Label" />
-            <Label fx:id="userTitleLabel" layoutX="71.0" layoutY="194.0" text="Label" />
-         </children></AnchorPane>
+            <Label fx:id="usernameLabel" text="Label" />
+            <Label fx:id="nameLabel" text="Label" />
+            <Label fx:id="emailLabel" text="Label" />
+            <Label fx:id="homeAddressLabel" text="Label" />
+            <Label fx:id="userTypeLabel" text="Label" />
+            <Label fx:id="userTitleLabel" text="Label" />
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#onEditPressed" text="Edit Profile">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </VBox>
    </left>
+   <right>
+      <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#onLogoutPressed" text="Logout" BorderPane.alignment="TOP_LEFT">
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </right>
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="TOP" text="How can we help?" textAlignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Label>
+            <GridPane alignment="CENTER" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="submitReportButton" mnemonicParsing="false" onAction="#onSubmitReportPressed" text="Submit Report" GridPane.halignment="CENTER" />
+                  <Button fx:id="viewAllReportsButton" mnemonicParsing="false" onAction="#onViewAllReportsPressed" text="View all Reports" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                  <Button mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </VBox>
+   </center>
 </BorderPane>
