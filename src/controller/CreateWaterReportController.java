@@ -47,6 +47,10 @@ public class CreateWaterReportController {
     @FXML
     private Button createButton;
 
+    /**
+     * sets main application
+     * @param main main application
+     */
     public void setMainApp (MainFXApplication main) {
         mainApplication = main;
     }
@@ -97,6 +101,10 @@ public class CreateWaterReportController {
         usernameLabel.setText(currUser.getUsername());
     }
 
+    /**
+     * sets the report number
+     * @param num report number
+     */
     public void setReportNumber(int num) {
         reportNumber = num;
         reportNumberLabel.setText("" + reportNumber);

@@ -53,6 +53,10 @@ public class ViewAllReportsController {
     private TableColumn userCol;
 
 
+    /**
+     * puts all reports into the table
+     * @param reports list of all water source reports in the system
+     */
     public void setReports(List<WaterSourceReport> reports) {
         this.reports = reports;
         ObservableList<WaterSourceReport> obsReports = FXCollections.observableArrayList(reports);

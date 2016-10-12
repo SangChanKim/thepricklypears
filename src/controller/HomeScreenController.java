@@ -82,7 +82,7 @@ public class HomeScreenController {
     }
 
     /**
-     * passes current user value to this controller
+     * passes current user value to this controller and displays all user information
      * @param auth current user
      */
     public void setUser(User auth) {
