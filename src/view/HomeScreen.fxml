@@ -86,10 +86,6 @@
                <children>
                   <Button fx:id="submitReportButton" mnemonicParsing="false" onAction="#onSubmitReportPressed" text="Submit Report" GridPane.halignment="CENTER" />
                   <Button fx:id="viewAllReportsButton" mnemonicParsing="false" onAction="#onViewAllReportsPressed" text="View all Reports" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                  <Button mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
