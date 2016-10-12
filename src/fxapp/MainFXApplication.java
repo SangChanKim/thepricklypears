@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.User;
+import model.WaterSourceReport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ public class MainFXApplication extends Application {
     private User currUser;
 
     private List<User> authUsers;
+
+    private List<WaterSourceReport> waterSourceReports;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
