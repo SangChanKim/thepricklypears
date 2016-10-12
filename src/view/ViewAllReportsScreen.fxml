@@ -3,10 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewAllReportsController">
    <top>
@@ -17,7 +17,16 @@
       </Label>
    </top>
    <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TableView fx:id="reportsTableView" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="reportNumCol" prefWidth="100.0" text="Report Number" />
+          <TableColumn fx:id="dateCol" prefWidth="50.0" text="Date" />
+            <TableColumn fx:id="locationCol" prefWidth="75.0" text="Location" />
+            <TableColumn fx:id="typeCol" prefWidth="75.0" text="Water Type" />
+            <TableColumn fx:id="conditionCol" prefWidth="75.0" text="Water Condition" />
+            <TableColumn fx:id="userCol" prefWidth="75.0" text="User" />
+        </columns>
+      </TableView>
    </center>
    <left>
       <Button fx:id="homeButton" mnemonicParsing="false" onAction="#onHomePressed" text="Home" BorderPane.alignment="TOP_LEFT">

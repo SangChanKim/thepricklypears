@@ -16,6 +16,8 @@ public class CreateWaterReportController {
 
     private Date date = new Date();
 
+    private int reportNumber;
+
     private User currUser;
 
     /*  **********************
@@ -54,9 +56,9 @@ public class CreateWaterReportController {
      */
     @FXML
     public void onCreatePressed() {
-        WaterSourceReport report = new WaterSourceReport(currUser.getUsername
-                (), "6", date, locationTextField.getText(),
-                waterTypeComboBox.getValue(), conditionComboBox.getValue());
+        mainApplication.addWaterSourceReport( new WaterSourceReport(currUser.getUsername
+                (), reportNumber, date, locationTextField.getText(),
+                waterTypeComboBox.getValue(), conditionComboBox.getValue()));
         mainApplication.showHomeScreen(currUser.getUsername());
     }
 
@@ -73,7 +75,7 @@ public class CreateWaterReportController {
         conditionComboBox.getItems().addAll(conditions);
         conditionComboBox.setValue(conditions[0]);
 
-        //TODO: set up report number
+        reportNumberLabel.setText("" + reportNumber);
 
         dateLabel.setText(date.toString());
     }
@@ -93,6 +95,11 @@ public class CreateWaterReportController {
     public void setUser(User auth) {
         currUser = auth;
         usernameLabel.setText(currUser.getUsername());
+    }
+
+    public void setReportNumber(int num) {
+        reportNumber = num;
+        reportNumberLabel.setText("" + reportNumber);
     }
 
 }

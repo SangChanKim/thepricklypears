@@ -35,6 +35,7 @@ public class MainFXApplication extends Application {
     public void start(Stage primaryStage) throws Exception{
         mainScreen = primaryStage;
         authUsers = new ArrayList<>();
+        waterSourceReports = new ArrayList<>();
         initRootLayout(mainScreen);
         showWelcomeScreen();
     }
@@ -46,6 +47,8 @@ public class MainFXApplication extends Application {
     public List<User> getAuthUsers() {
         return authUsers;
     }
+
+
 
     /**
      * Allows RegistrationController to add user to pseudo-backend of authorized users
@@ -70,6 +73,43 @@ public class MainFXApplication extends Application {
         for (User auth : authUsers) {
             if (auth.getUsername().equals(user)) {
                 authUsers.remove(auth);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Allows controllers to get list of all water source reports
+     * @return list of the water source reports
+     */
+    public List<WaterSourceReport> getWaterSourceReports() {
+        return waterSourceReports;
+    }
+
+    /**
+     * Allows CreateWaterReportController to add report to pseudo-backend of reports
+     * @param newReport the report to add
+     * @return whether the new report was added or not
+     */
+    public boolean addWaterSourceReport(WaterSourceReport newReport) {
+        if (waterSourceReports.contains(newReport)) {
+            return false;
+        } else {
+            waterSourceReports.add(newReport);
+            return true;
+        }
+    }
+
+    /**
+     * Allows ViewAllReportsController to delete report
+     * @param reportNumber report being updated
+     * @return whether remove was successful or not
+     */
+    public boolean removeWaterSourceReport(int reportNumber) {
+        for (WaterSourceReport report: waterSourceReports) {
+            if (report.getReportNumber().equals(reportNumber)) {
+                waterSourceReports.remove(report);
                 return true;
             }
         }
@@ -212,6 +252,7 @@ public class MainFXApplication extends Application {
 
             CreateWaterReportController controller = loader.getController();
             controller.setUser(currUser);
+            controller.setReportNumber(waterSourceReports.size() + 1);
             controller.setMainApp(this);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for CreateWaterReportScreen!!");
@@ -230,6 +271,7 @@ public class MainFXApplication extends Application {
 
             ViewAllReportsController controller = loader.getController();
             controller.setUser(currUser);
+            controller.setReports(waterSourceReports);
             controller.setMainApp(this);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewAllReportsScreen!!");

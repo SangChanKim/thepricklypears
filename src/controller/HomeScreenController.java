@@ -31,9 +31,6 @@ public class HomeScreenController {
     private Label homeAddressLabel;
 
     @FXML
-    private Label userTitleLabel;
-
-    @FXML
     private Label userTypeLabel;
 
     @FXML
@@ -90,12 +87,11 @@ public class HomeScreenController {
      */
     public void setUser(User auth) {
         currUser = auth;
-        usernameLabel.setText(currUser.getUsername());
-        nameLabel.setText(currUser.getName());
-        emailLabel.setText(currUser.getEmailAddress());
-        homeAddressLabel.setText(currUser.getHomeAddress());
-        userTitleLabel.setText(currUser.getUserTitle().toString());
-        userTypeLabel.setText(currUser.getUserType().toString());
+        usernameLabel.setText("Username: " + currUser.getUsername());
+        nameLabel.setText("Name: " + currUser.getUserTitle().toString() + " " + currUser.getName());
+        emailLabel.setText("Email: " + currUser.getEmailAddress());
+        homeAddressLabel.setText("Address: " + currUser.getHomeAddress());
+        userTypeLabel.setText("User Type: " + currUser.getUserType().toString());
     }
 
 }

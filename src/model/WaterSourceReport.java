@@ -12,7 +12,7 @@ import java.util.Date;
 public class WaterSourceReport {
 
     private final StringProperty username = new SimpleStringProperty();
-    private final StringProperty reportNumber = new SimpleStringProperty();
+    private final SimpleObjectProperty<Integer> reportNumber = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Date> date = new
             SimpleObjectProperty<Date>();
     private final StringProperty location = new SimpleStringProperty();
@@ -30,7 +30,7 @@ public class WaterSourceReport {
      * @param waterType     type of water source
      * @param waterCondition    condition of water
      */
-    public WaterSourceReport(String username, String reportNumber, Date date,
+    public WaterSourceReport(String username, int reportNumber, Date date,
      String location, WaterType waterType, WaterCondition waterCondition) {
         this.username.set(username);
         this.reportNumber.set(reportNumber);
@@ -38,6 +38,10 @@ public class WaterSourceReport {
         this.location.set(location);
         this.waterType.set(waterType);
         this.waterCondition.set(waterCondition);
+    }
+
+    public String toString() {
+        return getReportNumber() + "\t" +  getDate().toString() + "\t" + getLocation() + "\t" + waterType.toString() + "\t" + waterCondition.toString() + "\t" + username;
     }
 
 
@@ -53,15 +57,15 @@ public class WaterSourceReport {
         this.username.set(username);
     }
 
-    public String getReportNumber() {
+    public Integer getReportNumber() {
         return reportNumber.get();
     }
 
-    public StringProperty reportNumberProperty() {
+    public SimpleObjectProperty<Integer> reportNumberProperty() {
         return reportNumber;
     }
 
-    public void setReportNumber(String reportNumber) {
+    public void setReportNumber(int reportNumber) {
         this.reportNumber.set(reportNumber);
     }
 

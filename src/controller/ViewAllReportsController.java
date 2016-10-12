@@ -1,12 +1,18 @@
 package controller;
 
 import fxapp.MainFXApplication;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.User;
+import model.WaterCondition;
+import model.WaterSourceReport;
+import model.WaterType;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Valerie on 10/10/2016.
@@ -17,11 +23,67 @@ public class ViewAllReportsController {
 
     private User currUser;
 
+    private List<WaterSourceReport> reports;
+
     /*  **********************
             References to the FXML widgets in the .fxml file
         */
     @FXML
     private Button homeButton;
+
+    @FXML
+    private TableView<WaterSourceReport> reportsTableView;
+
+    @FXML
+    private TableColumn reportNumCol;
+
+    @FXML
+    private TableColumn dateCol;
+
+    @FXML
+    private TableColumn locationCol;
+
+    @FXML
+    private TableColumn typeCol;
+
+    @FXML
+    private TableColumn conditionCol;
+
+    @FXML
+    private TableColumn userCol;
+
+
+    public void setReports(List<WaterSourceReport> reports) {
+        this.reports = reports;
+        ObservableList<WaterSourceReport> obsReports = FXCollections.observableArrayList(reports);
+
+        reportNumCol.setCellValueFactory(
+                new PropertyValueFactory<WaterSourceReport,Integer>("reportNumber")
+        );
+
+        dateCol.setCellValueFactory(
+                new PropertyValueFactory<WaterSourceReport,Date>("date")
+        );
+
+        locationCol.setCellValueFactory(
+                new PropertyValueFactory<WaterSourceReport,String>("location")
+        );
+
+        typeCol.setCellValueFactory(
+                new PropertyValueFactory<WaterSourceReport, WaterType>("waterType")
+        );
+
+        conditionCol.setCellValueFactory(
+                new PropertyValueFactory<WaterSourceReport, WaterCondition>("waterCondition")
+        );
+
+        userCol.setCellValueFactory(
+                new PropertyValueFactory<WaterSourceReport,String>("username")
+        );
+
+        reportsTableView.setItems(obsReports);
+
+    }
 
 
 
