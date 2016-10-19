@@ -1,5 +1,6 @@
 package model;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -15,7 +16,7 @@ public class WaterSourceReport {
     private final SimpleObjectProperty<Integer> reportNumber = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Date> date = new
             SimpleObjectProperty<Date>();
-    private final StringProperty location = new SimpleStringProperty();
+    private final ObjectProperty<Location> location = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<WaterType> waterType = new
             SimpleObjectProperty<WaterType>();
     private final SimpleObjectProperty<WaterCondition> waterCondition = new
@@ -31,7 +32,7 @@ public class WaterSourceReport {
      * @param waterCondition    condition of water
      */
     public WaterSourceReport(String username, int reportNumber, Date date,
-     String location, WaterType waterType, WaterCondition waterCondition) {
+     Location location, WaterType waterType, WaterCondition waterCondition) {
         this.username.set(username);
         this.reportNumber.set(reportNumber);
         this.date.set(date);
@@ -81,15 +82,15 @@ public class WaterSourceReport {
         this.date.set(date);
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location.get();
     }
 
-    public StringProperty locationProperty() {
+    public ObjectProperty<Location> locationProperty() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location.set(location);
     }
 

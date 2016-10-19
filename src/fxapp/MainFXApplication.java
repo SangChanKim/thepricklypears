@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.Location;
 import model.User;
 import model.WaterSourceReport;
 
@@ -241,7 +242,7 @@ public class MainFXApplication extends Application {
         }
     }
 
-    public void showCreateWaterReportScreen() {
+    public void showCreateWaterReportScreen(Location loc) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainFXApplication.class.getResource("../view/CreateWaterReportScreen.fxml"));
@@ -253,6 +254,7 @@ public class MainFXApplication extends Application {
             CreateWaterReportController controller = loader.getController();
             controller.setUser(currUser);
             controller.setReportNumber(waterSourceReports.size() + 1);
+            controller.setPseudoLocation(loc);
             controller.setMainApp(this);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for CreateWaterReportScreen!!");
@@ -275,6 +277,24 @@ public class MainFXApplication extends Application {
             controller.setMainApp(this);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewAllReportsScreen!!");
+            e.printStackTrace();
+        }
+    }
+
+    public void showMapScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/mapview.fxml"));
+
+            BorderPane MapScreen = loader.load();
+
+            rootLayout.setCenter(MapScreen);
+
+            MapController controller = loader.getController();
+            controller.setUser(currUser);
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MapScreen!!");
             e.printStackTrace();
         }
     }

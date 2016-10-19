@@ -40,7 +40,7 @@ public class HomeScreenController {
     private Button editButton;
 
     @FXML
-    private Button submitReportButton;
+    private Button viewMapButton;
 
     @FXML
     private Button viewAllReportsButton;
@@ -69,8 +69,8 @@ public class HomeScreenController {
      * called when the user clicks Submit Report
      */
     @FXML
-    public void onSubmitReportPressed() {
-        mainApplication.showCreateWaterReportScreen();
+    public void onViewMapPressed() {
+        mainApplication.showMapScreen();
     }
 
     /**

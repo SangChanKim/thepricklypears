@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.User;
-import model.WaterCondition;
-import model.WaterSourceReport;
-import model.WaterType;
+import model.*;
 
 import java.util.Date;
 import java.util.List;
@@ -70,7 +67,7 @@ public class ViewAllReportsController {
         );
 
         locationCol.setCellValueFactory(
-                new PropertyValueFactory<WaterSourceReport,String>("location")
+                new PropertyValueFactory<WaterSourceReport, Location>("location")
         );
 
         typeCol.setCellValueFactory(

@@ -1,5 +1,6 @@
 package controller;
 
+import com.lynden.gmapsfx.javascript.object.Marker;
 import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -19,6 +20,8 @@ public class CreateWaterReportController {
     private int reportNumber;
 
     private User currUser;
+
+    private Location pseudoLocation;
 
     /*  **********************
             References to the FXML widgets in the .fxml file
@@ -47,6 +50,12 @@ public class CreateWaterReportController {
     @FXML
     private Button createButton;
 
+    @FXML
+    private TextField latField;
+
+    @FXML
+    private TextField longField;
+
     /**
      * sets main application
      * @param main main application
@@ -61,9 +70,9 @@ public class CreateWaterReportController {
     @FXML
     public void onCreatePressed() {
         mainApplication.addWaterSourceReport( new WaterSourceReport(currUser.getUsername
-                (), reportNumber, date, locationTextField.getText(),
+                (), reportNumber, date, new Location(Double.parseDouble(latField.getText()), Double.parseDouble(longField.getText()), locationTextField.getText().toString()),
                 waterTypeComboBox.getValue(), conditionComboBox.getValue()));
-        mainApplication.showHomeScreen(currUser.getUsername());
+        mainApplication.showMapScreen();
     }
 
     /**
@@ -89,7 +98,7 @@ public class CreateWaterReportController {
      */
     @FXML
     public void onCancelPressed() {
-        mainApplication.showHomeScreen(currUser.getUsername());
+        mainApplication.showMapScreen();
     }
 
     /**
@@ -108,6 +117,14 @@ public class CreateWaterReportController {
     public void setReportNumber(int num) {
         reportNumber = num;
         reportNumberLabel.setText("" + reportNumber);
+    }
+
+    public void setPseudoLocation(Location pseudo) {
+        pseudoLocation = pseudo;
+        if (pseudoLocation != null) {
+            latField.setText("" + pseudoLocation.getLatitude());
+            longField.setText("" + pseudoLocation.getLongitude());
+        }
     }
 
 }
