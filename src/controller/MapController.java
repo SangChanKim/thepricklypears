@@ -127,6 +127,19 @@ public class MapController implements Initializable, MapComponentInitializedList
     }
 
     /**
+     * called when add quality report button is pressed
+     */
+    @FXML
+    private void onAddQualityReportPressed() {
+        if (pseudoPinPlaced) {
+            mainApplication.showCreateWaterQualityReportScreen(pseudoLocation);
+        } else {
+            mainApplication.showCreateWaterQualityReportScreen(null);
+        }
+    }
+
+
+    /**
      * called when clear button is pressed
      */
     @FXML
@@ -170,6 +183,7 @@ public class MapController implements Initializable, MapComponentInitializedList
             });
             map.addMarker(marker);
         }
-    }
 
+
+    }
 }

@@ -74,12 +74,21 @@ public class HomeScreenController {
     }
 
     /**
-     * called when the user clicks Submit Report
+     * called when the user clicks view all reports
      */
     @FXML
     public void onViewAllReportsPressed() {
         mainApplication.showAllReportsScreen();
     }
+
+    /**
+     * called when the user clicks view all quality reports
+     */
+    @FXML
+    public void onViewAllQualityReportsPressed() {
+        mainApplication.showAllQualityReportsScreen();
+    }
+
 
     /**
      * passes current user value to this controller and displays all user information

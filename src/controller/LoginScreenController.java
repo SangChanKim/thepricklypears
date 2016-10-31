@@ -56,6 +56,7 @@ public class LoginScreenController {
 
             alert.showAndWait();
         }
+
     }
 
     /**

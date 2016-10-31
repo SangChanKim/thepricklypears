@@ -7,9 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.Location;
-import model.User;
-import model.WaterSourceReport;
+import model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,11 +30,25 @@ public class MainFXApplication extends Application {
 
     private List<WaterSourceReport> waterSourceReports;
 
+    private List<WaterQualityReport> waterQualityReports;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         mainScreen = primaryStage;
         authUsers = new ArrayList<>();
+        // For Testing
+        User u = new User("root", "root");
+        u.setUsername("root");
+        u.setName("root");
+        u.setEmailAddress("root@root.com");
+        u.setHomeAddress("root");
+        u.setPhoneNumber("root");
+        u.setUserType(UserType.WORKER);
+        u.setUserTitle(UserTitle.MISTER);
+        addAuthUser(u);
+
         waterSourceReports = new ArrayList<>();
+        waterQualityReports = new ArrayList<>();
         initRootLayout(mainScreen);
         showWelcomeScreen();
     }
@@ -52,7 +64,7 @@ public class MainFXApplication extends Application {
 
 
     /**
-     * Allows RegistrationController to add user to pseudo-backend of authorized users
+     * Allows RegistrationController to add user to pseudo-backen und of authorized users
      * @param newUser the user to add
      * @return whether the new user was added or not
      */
@@ -98,6 +110,20 @@ public class MainFXApplication extends Application {
             return false;
         } else {
             waterSourceReports.add(newReport);
+            return true;
+        }
+    }
+
+    /**
+     * Allows CreateWaterQualityReportController to add report to pseudo-backend of reports
+     * @param newQualityReport the report to add
+     * @return whether the new quality report was added or not
+     */
+    public boolean addWaterQualityReport(WaterQualityReport newQualityReport) {
+        if (waterQualityReports.contains(newQualityReport)) {
+            return false;
+        } else {
+            waterQualityReports.add(newQualityReport);
             return true;
         }
     }
@@ -262,6 +288,32 @@ public class MainFXApplication extends Application {
         }
     }
 
+    public void showCreateWaterQualityReportScreen(Location loc) {
+        UserType type = currUser.getUserType();
+        if (type.equals(UserType.MANAGER) || type.equals(UserType.WORKER)) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(MainFXApplication.class.getResource("../view/CreateWaterQualityReportScreen.fxml"));
+
+                BorderPane CreateWaterQualityReportScreen = loader.load();
+
+                rootLayout.setCenter(CreateWaterQualityReportScreen);
+
+                CreateWaterQualityReportController controller = loader.getController();
+                controller.setUser(currUser);
+                controller.setReportNumber(waterQualityReports.size() + 1);
+                controller.setPseudoLocation(loc);
+                controller.setMainApp(this);
+
+            } catch (IOException e) {
+                LOGGER.log(Level.SEVERE, "Failed to find the fxml file for CreateWaterQualityReportScreen!!");
+                e.printStackTrace();
+            }
+        } else {
+            LOGGER.log(Level.WARNING, "A unprivileged user tried to access the quality report screen");
+        }
+    }
+
     public void showAllReportsScreen() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -278,6 +330,28 @@ public class MainFXApplication extends Application {
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewAllReportsScreen!!");
             e.printStackTrace();
+        }
+    }
+
+    public void showAllQualityReportsScreen() {
+        UserType type = currUser.getUserType();
+        if (type.equals(UserType.MANAGER)) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(MainFXApplication.class.getResource("../view/ViewAllQualityReportsScreen.fxml"));
+
+                BorderPane viewAllQualityReportsScreen = loader.load();
+
+                rootLayout.setCenter(viewAllQualityReportsScreen);
+
+                ViewAllQualityReportsController controller = loader.getController();
+                controller.setUser(currUser);
+                controller.setReports(waterQualityReports);
+                controller.setMainApp(this);
+            } catch (IOException e) {
+                LOGGER.log(Level.SEVERE, "Failed to find the fxml file for ViewAllQualityReportsScreen!!");
+                e.printStackTrace();
+            }
         }
     }
 

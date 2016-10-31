@@ -1,17 +1,20 @@
 package controller;
 
-import com.lynden.gmapsfx.javascript.object.Marker;
 import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import model.*;
 
 import java.util.Date;
 
+
 /**
- * Created by Valerie on 10/10/2016.
+ * Created by Sang on 10/24/16.
  */
-public class CreateWaterReportController {
+public class CreateWaterQualityReportController {
 
     private MainFXApplication mainApplication;
 
@@ -24,8 +27,9 @@ public class CreateWaterReportController {
     private Location pseudoLocation;
 
     /*  **********************
-            References to the FXML widgets in the .fxml file
-        */
+        References to the FXML widgets in the .fxml file
+    */
+
     @FXML
     private Label usernameLabel;
 
@@ -39,10 +43,13 @@ public class CreateWaterReportController {
     private TextField locationTextField;
 
     @FXML
-    private ComboBox<WaterType> waterTypeComboBox;
+    private ComboBox<QualityCondition> conditionComboBox;
 
     @FXML
-    private ComboBox<WaterCondition> conditionComboBox;
+    private TextField virusPPMTextField;
+
+    @FXML
+    private TextField contaminantPPMTextField;
 
     @FXML
     private Button cancelButton;
@@ -56,20 +63,22 @@ public class CreateWaterReportController {
     @FXML
     private TextField longField;
 
+
     /**
      * sets main application
      * @param main main application
      */
-    public void setMainApp (MainFXApplication main) {
+    public void setMainApp(MainFXApplication main) {
         mainApplication = main;
     }
 
+
     /**
-     * called when the user clicks Create
+     * called when the user clicks Logout
      */
     @FXML
     public void onCreatePressed() {
-        mainApplication.addWaterSourceReport( new WaterSourceReport(
+        WaterQualityReport report = new WaterQualityReport(
                 currUser.getUsername(),
                 reportNumber,
                 date,
@@ -77,9 +86,11 @@ public class CreateWaterReportController {
                         Double.parseDouble(latField.getText()),
                         Double.parseDouble(longField.getText()),
                         locationTextField.getText().toString()),
-                waterTypeComboBox.getValue(),
-                conditionComboBox.getValue()));
-
+                conditionComboBox.getValue(),
+                Integer.parseInt(virusPPMTextField.getText()),
+                Integer.parseInt(contaminantPPMTextField.getText())
+                );
+        mainApplication.addWaterQualityReport(report);
         mainApplication.showMapScreen();
     }
 
@@ -88,11 +99,7 @@ public class CreateWaterReportController {
      */
     @FXML
     private void initialize() {
-        WaterType[] types = WaterType.values();
-        waterTypeComboBox.getItems().addAll(types);
-        waterTypeComboBox.setValue(types[0]);
-
-        WaterCondition[] conditions = WaterCondition.values();
+        QualityCondition[] conditions = QualityCondition.values();
         conditionComboBox.getItems().addAll(conditions);
         conditionComboBox.setValue(conditions[0]);
 
@@ -129,7 +136,7 @@ public class CreateWaterReportController {
 
     /**
      * sets the pseudo location
-     * @param pseudo the pseudo location
+     * @param pseudo the water source location
      */
     public void setPseudoLocation(Location pseudo) {
         pseudoLocation = pseudo;

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeScreenController">
    <top>
       <Label text="Welcome to Clean&#10;Water Crowdsourcing" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
          <font>
@@ -86,6 +86,7 @@
                <children>
                   <Button fx:id="viewMapButton" mnemonicParsing="false" onAction="#onViewMapPressed" text="View Map" GridPane.halignment="CENTER" />
                   <Button fx:id="viewAllReportsButton" mnemonicParsing="false" onAction="#onViewAllReportsPressed" text="View all Reports" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                  <Button fx:id="viewAllQualityReportsButton" mnemonicParsing="false" onAction="#onViewAllQualityReportsPressed" text="View Quality Report" GridPane.halignment="CENTER" GridPane.rowIndex="1"/>
                </children>
             </GridPane>
          </children>
