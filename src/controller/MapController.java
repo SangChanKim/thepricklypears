@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import model.Location;
 import model.User;
 import model.WaterSourceReport;
@@ -32,10 +33,13 @@ public class MapController implements Initializable, MapComponentInitializedList
     private User currUser;
 
     private boolean pseudoPinPlaced = false;
+    private boolean pinSelect = false;
 
     private Marker pseudoMarker;
 
     private Location pseudoLocation;
+
+    private String pinText;
 
     /*  **********************
             References to the FXML widgets in the .fxml file
@@ -51,6 +55,12 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     @FXML
     private Button addReportButton;
+
+    @FXML
+    private Button addQualityReportButton;
+
+    @FXML
+    private Label selectedPin;
 
     /**
      * sets main application
@@ -68,6 +78,8 @@ public class MapController implements Initializable, MapComponentInitializedList
     @Override
     public void mapInitialized() {
         MapOptions options = new MapOptions();
+        pinText = "none";
+        selectedPin.setText(pinText);
 
         //set up the center location for the map
         LatLong center = new LatLong(34, -88);
@@ -91,6 +103,9 @@ public class MapController implements Initializable, MapComponentInitializedList
         map.addUIEventHandler(UIEventType.click, (JSObject obj) -> {
                         LatLong ll = new LatLong((JSObject) obj.getMember("latLng"));
                         pseudoLocation = new Location(ll.getLatitude(), ll.getLongitude(), "p");
+                        pinSelect = false;
+                        pinText = "none";
+                        selectedPin.setText(pinText);
                         if (pseudoPinPlaced) {
                             map.removeMarker(pseudoMarker);
                             pseudoPinPlaced = false;
@@ -131,7 +146,7 @@ public class MapController implements Initializable, MapComponentInitializedList
      */
     @FXML
     private void onAddQualityReportPressed() {
-        if (pseudoPinPlaced) {
+        if (pinSelect) {
             mainApplication.showCreateWaterQualityReportScreen(pseudoLocation);
         } else {
             mainApplication.showCreateWaterQualityReportScreen(null);
@@ -175,6 +190,11 @@ public class MapController implements Initializable, MapComponentInitializedList
             Marker marker = new Marker(markerOptions);
 
             map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
+                LatLong ll = new LatLong((JSObject) obj.getMember("latLng"));
+                pseudoLocation = new Location(ll.getLatitude(), ll.getLongitude(), "p");
+                pinSelect = true;
+                pinText = l.getTitle();
+                selectedPin.setText(pinText);
                 InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
                 infoWindowOptions.content("" + "<h2>" + l.getTitle() + "</h2> <br>Water Condition: " + report.getWaterCondition() + "<br>Water Type: " + report.getWaterType());
 
