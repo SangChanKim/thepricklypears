@@ -33,7 +33,6 @@ public class MapController implements Initializable, MapComponentInitializedList
     private User currUser;
 
     private boolean pseudoPinPlaced = false;
-    private boolean pinSelect = false;
 
     private Marker pseudoMarker;
 
@@ -102,8 +101,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         //logic and callback for placing a pseudopin
         map.addUIEventHandler(UIEventType.click, (JSObject obj) -> {
                         LatLong ll = new LatLong((JSObject) obj.getMember("latLng"));
-                        pseudoLocation = new Location(ll.getLatitude(), ll.getLongitude(), "p");
-                        pinSelect = false;
+                        pseudoLocation = new Location(ll.getLatitude(), ll.getLongitude(), "");
                         pinText = "none";
                         selectedPin.setText(pinText);
                         if (pseudoPinPlaced) {
@@ -146,11 +144,7 @@ public class MapController implements Initializable, MapComponentInitializedList
      */
     @FXML
     private void onAddQualityReportPressed() {
-        if (pinSelect) {
             mainApplication.showCreateWaterQualityReportScreen(pseudoLocation);
-        } else {
-            mainApplication.showCreateWaterQualityReportScreen(null);
-        }
     }
 
 
@@ -191,8 +185,7 @@ public class MapController implements Initializable, MapComponentInitializedList
 
             map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
                 LatLong ll = new LatLong((JSObject) obj.getMember("latLng"));
-                pseudoLocation = new Location(ll.getLatitude(), ll.getLongitude(), "p");
-                pinSelect = true;
+                pseudoLocation = new Location(ll.getLatitude(), ll.getLongitude(), l.getTitle());
                 pinText = l.getTitle();
                 selectedPin.setText(pinText);
                 InfoWindowOptions infoWindowOptions = new InfoWindowOptions();

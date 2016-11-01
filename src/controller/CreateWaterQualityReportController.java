@@ -143,6 +143,7 @@ public class CreateWaterQualityReportController {
         if (pseudoLocation != null) {
             latField.setText("" + pseudoLocation.getLatitude());
             longField.setText("" + pseudoLocation.getLongitude());
+            locationTextField.setText("" + pseudoLocation.getTitle());
         }
     }
 
