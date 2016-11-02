@@ -1,5 +1,9 @@
 package fxapp;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import controller.*;
 
 import javafx.application.Application;
@@ -32,8 +36,13 @@ public class MainFXApplication extends Application {
 
     private List<WaterQualityReport> waterQualityReports;
 
+    private Firebase db;
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
+
+        this.db = new Firebase("https://thepricklypears-9a5e4.firebaseio.com/");
+
         mainScreen = primaryStage;
         authUsers = new ArrayList<>();
         // For Testing
@@ -47,7 +56,21 @@ public class MainFXApplication extends Application {
         u.setUserTitle(UserTitle.MISTER);
         addAuthUser(u);
 
+
         waterSourceReports = new ArrayList<>();
+
+        db.child("waterSourceReports").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
         waterQualityReports = new ArrayList<>();
         initRootLayout(mainScreen);
         showWelcomeScreen();
