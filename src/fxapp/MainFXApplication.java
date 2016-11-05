@@ -42,6 +42,8 @@ public class MainFXApplication extends Application {
 
     private int currWaterSourceReportNum;
 
+    private int currWaterQualityReportNum;
+
     private boolean passwordIsValid;
 
 
@@ -170,6 +172,63 @@ public class MainFXApplication extends Application {
 
 
         waterQualityReports = new ArrayList<>();
+
+        db.child("waterQualityReports").child("maxReportNum").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //System.out.println(dataSnapshot);
+                long max = (long) dataSnapshot.getValue();
+                currWaterQualityReportNum = (int) max;
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        db.child("waterQualityReports").child("reports").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                HashMap<String, Object> listOfReports = (HashMap<String, Object>)dataSnapshot.getValue();
+                for (String key: listOfReports.keySet()) {
+                    HashMap<String, String> map = (HashMap<String, String>) listOfReports.get(key);
+                    String user = map.get("user");
+                    int reportNumber = Integer.parseInt(map.get("reportNumber"));
+                    double lat = Double.parseDouble(map.get("lat"));
+                    double longg = Double.parseDouble(map.get("long"));
+                    String locationTitle = map.get("locationTitle");
+
+                    String qualityConditionStr = map.get("qualityCondition");
+                    QualityCondition[] types = QualityCondition.values();
+                    QualityCondition realType = types[0];
+                    for (QualityCondition type: types) {
+                        if (type.getCondition().equals(qualityConditionStr)) {
+                            realType = type;
+                        }
+                    }
+
+                    int virus = Integer.parseInt(map.get("virusPPM"));
+                    int contaminant = Integer.parseInt(map.get("contaminantPPM"));
+
+                    long timestamp = Long.parseLong(map.get("dateCreated"));
+                    Date date = new Date(timestamp);
+
+                    WaterQualityReport report = new WaterQualityReport(user,
+                            reportNumber,
+                            date,
+                            new Location(lat, longg, locationTitle),
+                            realType,
+                            virus,
+                            contaminant);
+                    waterQualityReports.add(report);
+                }
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
         initRootLayout(mainScreen);
         showWelcomeScreen();
     }
@@ -318,6 +377,21 @@ public class MainFXApplication extends Application {
             return false;
         } else {
             waterQualityReports.add(newQualityReport);
+            Map<String, String> reportDataMap = new HashMap<String, String>();
+        reportDataMap.put("reportNumber", newQualityReport.getReportNumber().toString());
+            reportDataMap.put("qualityCondition", newQualityReport.getQualityCondition().toString());
+            reportDataMap.put("user", newQualityReport.getUsername());
+            reportDataMap.put("dateCreated", "" + newQualityReport.getDate().getTime());
+            reportDataMap.put("virusPPM", newQualityReport.getVirusPPM().toString());
+            reportDataMap.put("contaminantPPM", newQualityReport.getContaminantPPM().toString());
+            reportDataMap.put("locationTitle", newQualityReport.getLocation().getTitle());
+            reportDataMap.put("lat", "" + newQualityReport.getLocation().getLatitude());
+            reportDataMap.put("long","" + newQualityReport.getLocation().getLongitude());
+            db.child("waterQualityReports").child("reports").push().setValue(reportDataMap);
+            currWaterQualityReportNum++;
+            db.child("waterQualityReports").child("maxReportNum").setValue(currWaterQualityReportNum);
+
+            LOGGER.log(Level.INFO, "Persisting " + newQualityReport.toString() + " to Firebase");
             return true;
         }
     }
