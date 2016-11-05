@@ -41,6 +41,7 @@ public class MainFXApplication extends Application {
     private Firebase db;
 
     private int currWaterSourceReportNum;
+
     private boolean passwordIsValid;
 
 
@@ -51,7 +52,55 @@ public class MainFXApplication extends Application {
 
         mainScreen = primaryStage;
         authUsers = new ArrayList<>();
-        // For Testing
+
+
+        db.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                HashMap<String, Object> listOfUsers = (HashMap<String, Object>)dataSnapshot.getValue();
+                for (String key: listOfUsers.keySet()) {
+                    HashMap<String, String> map = (HashMap<String, String>) listOfUsers.get(key);
+                    String name = map.get("name");
+                    String username = map.get("username");
+                    String password = map.get("password");
+                    String emailAddress = map.get("emailAddress");
+                    String homeAddress = map.get("homeAddress");
+                    String phoneNumber = map.get("phoneNumber");
+
+                    String userTypeStr = map.get("userType");
+                    UserType[] userTypes = UserType.values();
+                    UserType realUserType = userTypes[0];
+                    for (UserType userType: userTypes) {
+                        if (userType.getType().equals(userTypeStr)) {
+                            realUserType = userType;
+                        }
+                    }
+
+                    String userTitleStr = map.get("userTitle");
+                    UserTitle[] userTitles = UserTitle.values();
+                    UserTitle realUserTitle = userTitles[0];
+                    for (UserTitle userTitle : userTitles) {
+                        if (userTitle.getShortHand().equals(userTitleStr)) {
+                            realUserTitle = userTitle;
+                        }
+                    }
+
+                    User user = new User(username, password);
+                    user.setName(name);
+                    user.setEmailAddress(emailAddress);
+                    user.setHomeAddress(homeAddress);
+                    user.setPhoneNumber(phoneNumber);
+                    user.setUserType(realUserType);
+                    user.setUserTitle(realUserTitle);
+                    authUsers.add(user);
+                }
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
 
         waterSourceReports = new ArrayList<>();
 
@@ -90,7 +139,7 @@ public class MainFXApplication extends Application {
                         }
                     }
 
-                    String waterConditionStr = map.get("waterType");
+                    String waterConditionStr = map.get("waterCondition");
                     WaterCondition[] conditions = WaterCondition.values();
                     WaterCondition realCondition = conditions[0];
                     for (WaterCondition condition: conditions) {
@@ -116,6 +165,7 @@ public class MainFXApplication extends Application {
 
             }
         });
+
 
 
 
