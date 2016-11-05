@@ -70,18 +70,29 @@ public class CreateWaterReportController {
      */
     @FXML
     public void onCreatePressed() {
-        mainApplication.addWaterSourceReport( new WaterSourceReport(
-                currUser.getUsername(),
-                reportNumber,
-                date,
-                new Location(
-                        Double.parseDouble(latField.getText()),
-                        Double.parseDouble(longField.getText()),
-                        locationTextField.getText().toString()),
-                waterTypeComboBox.getValue(),
-                conditionComboBox.getValue()));
+        if (Double.parseDouble(latField.getText()) >= -90.0 && Double.parseDouble(latField.getText()) <= 90.0
+                && Double.parseDouble(longField.getText()) >= -180.0 && Double.parseDouble(longField.getText())<= 180.0) {
+            mainApplication.addWaterSourceReport(new WaterSourceReport(
+                    currUser.getUsername(),
+                    reportNumber,
+                    date,
+                    new Location(
+                            Double.parseDouble(latField.getText()),
+                            Double.parseDouble(longField.getText()),
+                            locationTextField.getText().toString()),
+                    waterTypeComboBox.getValue(),
+                    conditionComboBox.getValue()));
 
-        mainApplication.showMapScreen();
+            mainApplication.showMapScreen();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Create Water Source Report Failed");
+            alert.setHeaderText("Incorrect Latitude/Longitude Combination");
+            alert.setContentText("Please Try Again");
+
+            alert.showAndWait();
+
+        }
     }
 
     /**
