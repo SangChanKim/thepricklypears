@@ -190,7 +190,7 @@ public class MainFXApplication extends Application {
      * @return whether the new user was added or not
      */
     public boolean addAuthUser(User newUser) {
-        Firebase usersRef = db.child("users");
+        Firebase usersRef = db.child("users").child(newUser.getUsername());
 
         Map<String, String> userDataMap = new HashMap<String, String>();
         userDataMap.put("name", newUser.getName());
@@ -202,10 +202,7 @@ public class MainFXApplication extends Application {
         userDataMap.put("userType", newUser.getUserType().toString());
         userDataMap.put("userTitle", newUser.getUserTitle().toString());
 
-        Map<String, Map<String, String>> users = new HashMap<>();
-        users.put(newUser.getUsername(), userDataMap);
-
-        usersRef.setValue(users);
+        usersRef.setValue(userDataMap);
 
         if (authUsers.contains(newUser)) {
             return false;
