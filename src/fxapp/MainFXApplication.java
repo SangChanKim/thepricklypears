@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 import model.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,6 +39,8 @@ public class MainFXApplication extends Application {
     private List<WaterQualityReport> waterQualityReports;
 
     private Firebase db;
+
+    private int currWaterSourceReportNum;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -62,12 +64,61 @@ public class MainFXApplication extends Application {
         waterSourceReports = new ArrayList<>();
 
 
-        db.child("waterSourceReports").addListenerForSingleValueEvent(new ValueEventListener() {
+        db.child("waterSourceReports").child("maxReportNum").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //System.out.println(dataSnapshot);
+                long max = (long) dataSnapshot.getValue();
+                currWaterSourceReportNum = (int) max;
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
 
             }
+        });
 
+        db.child("waterSourceReports").child("reports").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                HashMap<String, Object> listOfReports = (HashMap<String, Object>)dataSnapshot.getValue();
+                for (String key: listOfReports.keySet()) {
+                    HashMap<String, String> map = (HashMap<String, String>) listOfReports.get(key);
+                    String user = map.get("user");
+                    int reportNumber = Integer.parseInt(map.get("reportNumber"));
+                    double lat = Double.parseDouble(map.get("lat"));
+                    double longg = Double.parseDouble(map.get("long"));
+                    String locationTitle = map.get("locationTitle");
+
+                    String waterTypeStr = map.get("waterType");
+                    WaterType[] types = WaterType.values();
+                    WaterType realType = types[0];
+                    for (WaterType type: types) {
+                        if (type.getType().equals(waterTypeStr)) {
+                            realType = type;
+                        }
+                    }
+
+                    String waterConditionStr = map.get("waterType");
+                    WaterCondition[] conditions = WaterCondition.values();
+                    WaterCondition realCondition = conditions[0];
+                    for (WaterCondition condition: conditions) {
+                        if (condition.getCondition().equals(waterConditionStr)) {
+                            realCondition = condition;
+                        }
+                    }
+
+                    long timestamp = Long.parseLong(map.get("dateCreated"));
+                    Date date = new Date(timestamp);
+
+                    WaterSourceReport report = new WaterSourceReport(user,
+                            reportNumber,
+                            date,
+                            new Location(lat, longg, locationTitle),
+                            realType,
+                            realCondition);
+                    waterSourceReports.add(report);
+                }
+            }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
@@ -142,13 +193,14 @@ public class MainFXApplication extends Application {
             reportDataMap.put("reportNumber", newReport.getReportNumber().toString());
             reportDataMap.put("waterCondition", newReport.getWaterCondition().toString());
             reportDataMap.put("user", newReport.getUsername());
-            reportDataMap.put("dateCreated", newReport.getDate().toString());
+            reportDataMap.put("dateCreated", "" + newReport.getDate().getTime());
             reportDataMap.put("waterType", newReport.getWaterType().toString());
             reportDataMap.put("locationTitle", newReport.getLocation().getTitle());
             reportDataMap.put("lat", "" + newReport.getLocation().getLatitude());
             reportDataMap.put("long","" + newReport.getLocation().getLongitude());
-            db.child("waterSourceReports").push().setValue(reportDataMap);
-            db.child("waterSourceReports").setValue(newReport.getReportNumber());
+            db.child("waterSourceReports").child("reports").push().setValue(reportDataMap);
+            currWaterSourceReportNum++;
+            db.child("waterSourceReports").child("maxReportNum").setValue(currWaterSourceReportNum);
 
             LOGGER.log(Level.INFO, "Persisting " + newReport.toString() + " to Firebase");
             return true;
@@ -320,13 +372,11 @@ public class MainFXApplication extends Application {
 
             CreateWaterReportController controller = loader.getController();
             controller.setUser(currUser);
-
-            // TODO
-            // Use max report num + 1 from DB
-            controller.setReportNumber(waterSourceReports.size() + 1);
+            controller.setReportNumber(currWaterSourceReportNum + 1);
 
             controller.setPseudoLocation(loc);
             controller.setMainApp(this);
+
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for CreateWaterReportScreen!!");
             e.printStackTrace();

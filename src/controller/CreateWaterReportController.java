@@ -23,6 +23,7 @@ public class CreateWaterReportController {
 
     private Location pseudoLocation;
 
+
     /*  **********************
             References to the FXML widgets in the .fxml file
         */
