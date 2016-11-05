@@ -15,7 +15,9 @@ import model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,6 +61,7 @@ public class MainFXApplication extends Application {
 
         waterSourceReports = new ArrayList<>();
 
+
         db.child("waterSourceReports").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -70,6 +73,8 @@ public class MainFXApplication extends Application {
 
             }
         });
+
+
 
         waterQualityReports = new ArrayList<>();
         initRootLayout(mainScreen);
@@ -133,6 +138,19 @@ public class MainFXApplication extends Application {
             return false;
         } else {
             waterSourceReports.add(newReport);
+            Map<String, String> reportDataMap = new HashMap<String, String>();
+            reportDataMap.put("reportNumber", newReport.getReportNumber().toString());
+            reportDataMap.put("waterCondition", newReport.getWaterCondition().toString());
+            reportDataMap.put("user", newReport.getUsername());
+            reportDataMap.put("dateCreated", newReport.getDate().toString());
+            reportDataMap.put("waterType", newReport.getWaterType().toString());
+            reportDataMap.put("locationTitle", newReport.getLocation().getTitle());
+            reportDataMap.put("lat", "" + newReport.getLocation().getLatitude());
+            reportDataMap.put("long","" + newReport.getLocation().getLongitude());
+            db.child("waterSourceReports").push().setValue(reportDataMap);
+            db.child("waterSourceReports").setValue(newReport.getReportNumber());
+
+            LOGGER.log(Level.INFO, "Persisting " + newReport.toString() + " to Firebase");
             return true;
         }
     }
@@ -302,7 +320,11 @@ public class MainFXApplication extends Application {
 
             CreateWaterReportController controller = loader.getController();
             controller.setUser(currUser);
+
+            // TODO
+            // Use max report num + 1 from DB
             controller.setReportNumber(waterSourceReports.size() + 1);
+
             controller.setPseudoLocation(loc);
             controller.setMainApp(this);
         } catch (IOException e) {
