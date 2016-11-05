@@ -40,6 +40,8 @@ public class MainFXApplication extends Application {
 
     private Firebase db;
 
+    private boolean passwordIsValid;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -48,16 +50,6 @@ public class MainFXApplication extends Application {
         mainScreen = primaryStage;
         authUsers = new ArrayList<>();
         // For Testing
-        User u = new User("root", "root");
-        u.setUsername("root");
-        u.setName("root");
-        u.setEmailAddress("root@root.com");
-        u.setHomeAddress("root");
-        u.setPhoneNumber("root");
-        u.setUserType(UserType.WORKER);
-        u.setUserTitle(UserTitle.MISTER);
-        addAuthUser(u);
-
 
         waterSourceReports = new ArrayList<>();
 
@@ -97,6 +89,23 @@ public class MainFXApplication extends Application {
      * @return whether the new user was added or not
      */
     public boolean addAuthUser(User newUser) {
+        Firebase usersRef = db.child("users");
+
+        Map<String, String> userDataMap = new HashMap<String, String>();
+        userDataMap.put("name", newUser.getName());
+        userDataMap.put("username", newUser.getUsername());
+        userDataMap.put("password", newUser.getPassword());
+        userDataMap.put("emailAddress", newUser.getEmailAddress());
+        userDataMap.put("homeAddress", newUser.getHomeAddress());
+        userDataMap.put("phoneNumber", newUser.getPhoneNumber());
+        userDataMap.put("userType", newUser.getUserType().toString());
+        userDataMap.put("userTitle", newUser.getUserTitle().toString());
+
+        Map<String, Map<String, String>> users = new HashMap<>();
+        users.put(newUser.getUsername(), userDataMap);
+
+        usersRef.setValue(users);
+
         if (authUsers.contains(newUser)) {
             return false;
         } else {
@@ -113,11 +122,56 @@ public class MainFXApplication extends Application {
     public boolean removeAuthUser(String user) {
         for (User auth : authUsers) {
             if (auth.getUsername().equals(user)) {
+                db.child("users").child(auth.getUsername()).removeValue();
                 authUsers.remove(auth);
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * Checks database and authenticates user accordingly
+     *
+     * @param user
+     * @param pass
+     * @return
+     */
+    public boolean authenticate(String user, String pass) {
+        passwordIsValid = false;
+        if (db.child("users").child(user) == null) {
+            System.out.println("User not in system");
+            return passwordIsValid;
+        } else {
+            Firebase ref = db.child("users").child(user).child("password");
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    // do some stuff once
+                    if (snapshot == null || snapshot.getValue() == null) {
+                        System.out.println("User is not in the system");
+                        passwordIsValid = false;
+                    } else if (snapshot.getValue().toString().equals(pass)) {
+                        passwordIsValid = true;
+                        System.out.println("User is authenticated");
+                    } else {
+                        System.out.println("Incorrect password");
+                    }
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                }
+            });
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("done authenticating");
+        System.out.println(passwordIsValid);
+        return passwordIsValid;
     }
 
     /**
