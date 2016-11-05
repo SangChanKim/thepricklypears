@@ -66,13 +66,14 @@ public class LoginScreenController {
      * @return if information is valid or not
      */
     private boolean validate(String user, String pass) {
-        boolean valid = false;
-        for (User auth : mainApplication.getAuthUsers()) {
-            if (auth.getUsername().equals(user) && auth.getPassword().equals(pass)) {
-                valid = true;
-            }
-        }
-        return valid;
+        return mainApplication.authenticate(user, pass);
+//        boolean valid = false;
+//        for (User auth : mainApplication.getAuthUsers()) {
+//            if (auth.getUsername().equals(user) && auth.getPassword().equals(pass)) {
+//                valid = true;
+//            }
+//        }
+//        return valid;
     }
 
 }
