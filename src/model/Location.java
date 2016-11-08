@@ -38,4 +38,16 @@ public class Location {
         return title;
     }
 
+    /**
+     * checks if longitude/latitude and location title are the same for two Locations
+     * @param l2 other Location to compare with
+     * @return whether they are equal or not
+     */
+    public boolean equals(Location l2) {
+        if ((this.getLatitude() == l2.getLatitude() && this.getLongitude() == l2.getLongitude()) && (this.getTitle().equals(l2.getTitle()))) {
+            return true;
+        }
+        return false;
+    }
+
 }

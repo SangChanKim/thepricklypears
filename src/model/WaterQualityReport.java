@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by Sang on 10/24/16.
  */
-public class WaterQualityReport {
+public class WaterQualityReport implements Comparable<WaterQualityReport> {
     private final StringProperty username = new SimpleStringProperty();
     private final SimpleObjectProperty<Integer> reportNumber = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Date> date = new
@@ -134,6 +134,10 @@ public class WaterQualityReport {
 
     public void setContaminantPPM(int contaminantPPM) {
         this.contaminantPPM.set(contaminantPPM);
+    }
+
+    public int compareTo(WaterQualityReport q2) {
+        return this.getDate().compareTo(q2.getDate());
     }
 
 }

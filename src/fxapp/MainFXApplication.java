@@ -412,6 +412,14 @@ public class MainFXApplication extends Application {
     }
 
     /**
+     * Allows controllers to get list of all water quality reports
+     * @return list of the water quality reports
+     */
+    public List<WaterQualityReport> getWaterQualityReports() {
+        return waterQualityReports;
+    }
+
+    /**
      * Initialize the main screen for the application.  Most other views will be shown in this screen.
      *
      * @param mainScreen  the main Stage window of the application
@@ -637,6 +645,48 @@ public class MainFXApplication extends Application {
             MapController controller = loader.getController();
             controller.setUser(currUser);
             controller.setMainApp(this);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MapScreen!!");
+            e.printStackTrace();
+        }
+    }
+
+    public void showHistoricReportOptionsScreen(Location location) {
+        UserType type = currUser.getUserType();
+        if (type.equals(UserType.MANAGER)) {
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(MainFXApplication.class.getResource("../view/HistoricReportOptionsScreen.fxml"));
+
+                BorderPane optionsScreen = loader.load();
+
+                rootLayout.setCenter(optionsScreen);
+
+                HistoricReportOptionsScreenController controller = loader.getController();
+                controller.setPseudoLocation(location);
+                controller.setMainApp(this);
+            } catch (IOException e) {
+                LOGGER.log(Level.SEVERE, "Failed to find the fxml file for HistoricReportOptionsScreen!!");
+                e.printStackTrace();
+            }
+        } else {
+            LOGGER.log(Level.WARNING, "A unprivileged user tried to access the quality report screen");
+        }
+    }
+
+    public void showWaterQualityHistoryGraph(Date startDate, Date endDate, List<WaterQualityReport> qualityReports) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainFXApplication.class.getResource("../view/ViewWaterQualityHistoryGraph.fxml"));
+
+            BorderPane historyGraph = loader.load();
+
+            rootLayout.setCenter(historyGraph);
+
+            HistoricReportController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setDateAndData(startDate, endDate, qualityReports);
+            controller.setUpGraph();
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to find the fxml file for MapScreen!!");
             e.printStackTrace();

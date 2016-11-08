@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.Location;
@@ -60,6 +61,9 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     @FXML
     private Label selectedPin;
+
+    @FXML
+    private Button viewHistoricalReportButton;
 
     /**
      * sets main application
@@ -156,6 +160,23 @@ public class MapController implements Initializable, MapComponentInitializedList
         if (pseudoPinPlaced) {
             map.removeMarker(pseudoMarker);
             pseudoPinPlaced = false;
+            pseudoLocation = null;
+        }
+    }
+
+    /**
+     * called when the historical report button is pressed. Launches the options for viewing historical graphs.
+     */
+    @FXML
+    private void onHistoricalReportPressed() {
+        if (pseudoLocation != null) {
+            mainApplication.showHistoricReportOptionsScreen(pseudoLocation);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("No Pin selected");
+            alert.setContentText("Must have Pin selected to view graph");
+
+            alert.showAndWait();
         }
     }
 
