@@ -468,23 +468,6 @@ public class MainFXApplication extends Application {
         }
     }
 
-    public void showLoginScreen() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../view/LoginScreen.fxml"));
-
-            BorderPane loginScreen = loader.load();
-
-            rootLayout.setCenter(loginScreen);
-
-            LoginScreenController controller = loader.getController();
-            controller.setMainApp(this);
-        } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Failed to find the fxml file for LoginScreen!!");
-            e.printStackTrace();
-        }
-    }
-
     public void showHomeScreen(String username) {
         try {
             for (User auth : authUsers) {
