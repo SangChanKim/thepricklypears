@@ -7,6 +7,6 @@ import static org.junit.Assert.*;
 /**
  * Created by sang on 11/13/16.
  */
-public class MainFXApplicationTest extends TestCase {
+public class PricklyPearsTest extends TestCase {
 
 }
