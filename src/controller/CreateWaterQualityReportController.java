@@ -6,8 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.*;
-
+import model.Location;
+import model.QualityCondition;
+import model.User;
+import model.WaterQualityReport;
 import java.util.Date;
 
 
@@ -23,8 +25,6 @@ public class CreateWaterQualityReportController {
     private int reportNumber;
 
     private User currUser;
-
-    private Location pseudoLocation;
 
     /*  **********************
         References to the FXML widgets in the .fxml file
@@ -139,7 +139,7 @@ public class CreateWaterQualityReportController {
      * @param pseudo the water source location
      */
     public void setPseudoLocation(Location pseudo) {
-        pseudoLocation = pseudo;
+        Location pseudoLocation = pseudo;
         if (pseudoLocation != null) {
             latField.setText("" + pseudoLocation.getLatitude());
             longField.setText("" + pseudoLocation.getLongitude());

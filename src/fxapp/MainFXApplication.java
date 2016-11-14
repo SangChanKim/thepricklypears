@@ -61,7 +61,7 @@ public class MainFXApplication extends Application {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 HashMap<String, Object> listOfUsers = (HashMap<String, Object>)dataSnapshot.getValue();
                 for (String key: listOfUsers.keySet()) {
-                    HashMap<String, String> map = (HashMap<String, String>) listOfUsers.get(key);
+                    Map<String, String> map = (HashMap<String, String>) listOfUsers.get(key);
                     String name = map.get("name");
                     String username = map.get("username");
                     String password = map.get("password");
@@ -125,7 +125,7 @@ public class MainFXApplication extends Application {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 HashMap<String, Object> listOfReports = (HashMap<String, Object>)dataSnapshot.getValue();
                 for (String key: listOfReports.keySet()) {
-                    HashMap<String, String> map = (HashMap<String, String>) listOfReports.get(key);
+                    Map<String, String> map = (HashMap<String, String>) listOfReports.get(key);
                     String user = map.get("user");
                     int reportNumber = Integer.parseInt(map.get("reportNumber"));
                     double lat = Double.parseDouble(map.get("lat"));
@@ -191,7 +191,7 @@ public class MainFXApplication extends Application {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 HashMap<String, Object> listOfReports = (HashMap<String, Object>)dataSnapshot.getValue();
                 for (String key: listOfReports.keySet()) {
-                    HashMap<String, String> map = (HashMap<String, String>) listOfReports.get(key);
+                    Map<String, String> map = (HashMap<String, String>) listOfReports.get(key);
                     String user = map.get("user");
                     int reportNumber = Integer.parseInt(map.get("reportNumber"));
                     double lat = Double.parseDouble(map.get("lat"));

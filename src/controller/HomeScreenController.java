@@ -13,8 +13,6 @@ import sun.rmi.runtime.Log;
 public class HomeScreenController {
     private MainFXApplication mainApplication;
 
-    private User currUser;
-
     /*  **********************
             References to the FXML widgets in the .fxml file
         */
@@ -95,7 +93,7 @@ public class HomeScreenController {
      * @param auth current user
      */
     public void setUser(User auth) {
-        currUser = auth;
+        User currUser = auth;
         usernameLabel.setText("Username: " + currUser.getUsername());
         nameLabel.setText("Name: " + currUser.getUserTitle().toString() + " " + currUser.getName());
         emailLabel.setText("Email: " + currUser.getEmailAddress());
