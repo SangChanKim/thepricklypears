@@ -20,8 +20,6 @@ public class ViewAllReportsController {
 
     private User currUser;
 
-    private List<WaterSourceReport> reports;
-
     /*  **********************
             References to the FXML widgets in the .fxml file
         */
@@ -55,7 +53,7 @@ public class ViewAllReportsController {
      * @param reports list of all water source reports in the system
      */
     public void setReports(List<WaterSourceReport> reports) {
-        this.reports = reports;
+        List<WaterSourceReport> reports1 = reports;
         ObservableList<WaterSourceReport> obsReports = FXCollections.observableArrayList(reports);
 
         reportNumCol.setCellValueFactory(

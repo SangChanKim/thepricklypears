@@ -2,14 +2,19 @@ package controller;
 
 import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import model.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import model.Location;
+import model.User;
+import model.WaterQualityReport;
+
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -61,9 +66,10 @@ public class HistoricReportOptionsScreenController {
      */
     @FXML
     public void onViewGraphPressed() {
-        if (startDatePicker.getValue() == null || endDatePicker.getValue() == null
-                || latitudeTextField.getText().equals("") || longitudeTextField.getText().equals("")
-                || locationTextField.getText().equals("")) {
+        if ((startDatePicker.getValue() == null)
+                || (endDatePicker.getValue() == null)
+                || (latitudeTextField.getText().equals("") || longitudeTextField.getText().equals(""))
+                || (locationTextField.getText().equals(""))) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Missing data fields");
             alert.showAndWait();
@@ -83,7 +89,7 @@ public class HistoricReportOptionsScreenController {
                     }
                 }
             }
-            if (thisLocQualityReports.size() == 0) {
+            if (thisLocQualityReports.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("There are no Water Quality Reports for this location and time period");
 

@@ -365,9 +365,6 @@ public class DateAxis310 extends Axis<LocalDateTime> {
             switch (actualInterval.INTERVAL) {
                 case DAYS:
                 case WEEKS:
-                default:
-                    dateTimeFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
-                    break;
                 case HOURS:
                 case MINUTES:
                     dateTimeFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
@@ -377,6 +374,9 @@ public class DateAxis310 extends Axis<LocalDateTime> {
                     break;
                 case MILLIS:
                     dateTimeFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+                    break;
+                default:
+                    dateTimeFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM);
                     break;
             }
         }

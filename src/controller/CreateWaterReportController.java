@@ -1,10 +1,18 @@
 package controller;
 
-import com.lynden.gmapsfx.javascript.object.Marker;
 import fxapp.MainFXApplication;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import model.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import model.User;
+import model.Location;
+import model.WaterType;
+import model.WaterCondition;
+import model.WaterSourceReport;
+
 
 import java.util.Date;
 
@@ -21,7 +29,13 @@ public class CreateWaterReportController {
 
     private User currUser;
 
-    private Location pseudoLocation;
+    private static final double LATLOWERBOUND = -90.0;
+
+    private static final double LATUPPERBOUND = 90.0;
+
+    private static final double LONGLOWERBOUND = -180.0;
+
+    private static final double LONGUPPERBOUND = 180.0;
 
 
     /*  **********************
@@ -70,8 +84,10 @@ public class CreateWaterReportController {
      */
     @FXML
     public void onCreatePressed() {
-        if (Double.parseDouble(latField.getText()) >= -90.0 && Double.parseDouble(latField.getText()) <= 90.0
-                && Double.parseDouble(longField.getText()) >= -180.0 && Double.parseDouble(longField.getText())<= 180.0) {
+        if ((Double.parseDouble(latField.getText()) >= LATLOWERBOUND)
+                && (Double.parseDouble(latField.getText()) <= LATUPPERBOUND)
+                && (Double.parseDouble(longField.getText()) >= LONGLOWERBOUND)
+                && (Double.parseDouble(longField.getText())<= LONGUPPERBOUND)) {
             mainApplication.addWaterSourceReport(new WaterSourceReport(
                     currUser.getUsername(),
                     reportNumber,
@@ -144,7 +160,7 @@ public class CreateWaterReportController {
      * @param pseudo the pseudo location
      */
     public void setPseudoLocation(Location pseudo) {
-        pseudoLocation = pseudo;
+        Location pseudoLocation = pseudo;
         if (pseudoLocation != null) {
             latField.setText("" + pseudoLocation.getLatitude());
             longField.setText("" + pseudoLocation.getLongitude());
