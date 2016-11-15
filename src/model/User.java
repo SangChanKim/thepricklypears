@@ -138,7 +138,8 @@ public class User {
      * @return whether the user is equal or not
      */
     public boolean equals(User other) {
-        return (this.getName().equals(other.getName()))
+        return (other != null)
+                && (this.getName().equals(other.getName()))
                 && (this.getUsername().equals(other.getUsername()))
                 && (this.getPassword().equals(other.getPassword()))
                 && (this.getEmailAddress().equals(other.getEmailAddress()))
