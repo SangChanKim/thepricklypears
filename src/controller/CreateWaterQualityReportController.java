@@ -12,15 +12,16 @@ import model.User;
 import model.WaterQualityReport;
 import java.util.Date;
 
-
 /**
- * Created by Sang on 10/24/16.
+ * Created by sang on 10/1/16.
+ *
+ * Represents a controller for water quality report creation
  */
 public class CreateWaterQualityReportController {
 
     private MainFXApplication mainApplication;
 
-    private Date date = new Date();
+    private final Date date = new Date();
 
     private int reportNumber;
 
@@ -85,7 +86,7 @@ public class CreateWaterQualityReportController {
                 new Location(
                         Double.parseDouble(latField.getText()),
                         Double.parseDouble(longField.getText()),
-                        locationTextField.getText().toString()),
+                        locationTextField.getText()),
                 conditionComboBox.getValue(),
                 Integer.parseInt(virusPPMTextField.getText()),
                 Integer.parseInt(contaminantPPMTextField.getText())
@@ -139,11 +140,10 @@ public class CreateWaterQualityReportController {
      * @param pseudo the water source location
      */
     public void setPseudoLocation(Location pseudo) {
-        Location pseudoLocation = pseudo;
-        if (pseudoLocation != null) {
-            latField.setText("" + pseudoLocation.getLatitude());
-            longField.setText("" + pseudoLocation.getLongitude());
-            locationTextField.setText("" + pseudoLocation.getTitle());
+        if (pseudo != null) {
+            latField.setText("" + pseudo.getLatitude());
+            longField.setText("" + pseudo.getLongitude());
+            locationTextField.setText("" + pseudo.getTitle());
         }
     }
 

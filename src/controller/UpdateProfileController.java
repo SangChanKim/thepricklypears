@@ -9,6 +9,8 @@ import model.UserType;
 
 /**
  * Created by Victor on 10/2/2016.
+ *
+ * Represents a controller for profile update
  */
 public class UpdateProfileController {
 
@@ -69,7 +71,7 @@ public class UpdateProfileController {
      */
     @FXML
     private void initialize() {
-        //populate comboboxes
+        //populate combo boxes
         UserType[] types = UserType.values();
         userTypeComboBox.getItems().addAll(types);
         userTypeComboBox.setValue(types[0]);

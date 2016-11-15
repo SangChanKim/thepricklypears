@@ -8,17 +8,19 @@ import java.util.Date;
 
 /**
  * Created by Sang on 10/24/16.
+ *
+ * Represents a water quality report
  */
 public class WaterQualityReport implements Comparable<WaterQualityReport> {
     private final StringProperty username = new SimpleStringProperty();
     private final SimpleObjectProperty<Integer> reportNumber = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Date> date = new
-            SimpleObjectProperty<Date>();
+            SimpleObjectProperty<>();
     private final ObjectProperty<Location> location = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<QualityCondition> qualityCondition = new
-            SimpleObjectProperty<QualityCondition>();
-    private final SimpleObjectProperty<Integer> virusPPM = new SimpleObjectProperty<Integer>();
-    private final SimpleObjectProperty<Integer> contaminantPPM = new SimpleObjectProperty<Integer>();
+            SimpleObjectProperty<>();
+    private final SimpleObjectProperty<Integer> virusPPM = new SimpleObjectProperty<>();
+    private final SimpleObjectProperty<Integer> contaminantPPM = new SimpleObjectProperty<>();
 
     /**
      * Make a new water source report

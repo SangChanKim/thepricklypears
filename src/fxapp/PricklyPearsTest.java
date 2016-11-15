@@ -8,6 +8,8 @@ import static junit.framework.TestCase.*;
 
 /**
  * Created by sang on 11/13/16.
+ *
+ * JUnit Test Cases
  */
 public class PricklyPearsTest {
 

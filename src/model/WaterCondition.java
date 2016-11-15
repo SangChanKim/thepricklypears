@@ -2,6 +2,8 @@ package model;
 
 /**
  * Created by Valerie on 10/11/2016.
+ *
+ * Represents all the water source conditions
  */
 public enum WaterCondition {
 

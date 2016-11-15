@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * Created by Valerie on 10/10/2016.
+ *
+ * Represents a controller for viewing all water source reports
  */
 public class ViewAllReportsController {
 
@@ -53,7 +55,6 @@ public class ViewAllReportsController {
      * @param reports list of all water source reports in the system
      */
     public void setReports(List<WaterSourceReport> reports) {
-        List<WaterSourceReport> reports1 = reports;
         ObservableList<WaterSourceReport> obsReports = FXCollections.observableArrayList(reports);
 
         reportNumCol.setCellValueFactory(

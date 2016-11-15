@@ -9,18 +9,20 @@ import java.util.Date;
 
 /**
  * Created by Valerie on 10/11/2016.
+ *
+ * Represents a water source report
  */
 public class WaterSourceReport {
 
     private final StringProperty username = new SimpleStringProperty();
     private final SimpleObjectProperty<Integer> reportNumber = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Date> date = new
-            SimpleObjectProperty<Date>();
+            SimpleObjectProperty<>();
     private final ObjectProperty<Location> location = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<WaterType> waterType = new
-            SimpleObjectProperty<WaterType>();
+            SimpleObjectProperty<>();
     private final SimpleObjectProperty<WaterCondition> waterCondition = new
-            SimpleObjectProperty<WaterCondition>();
+            SimpleObjectProperty<>();
 
     /**
      * Make a new water source report

@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.User;
-import sun.rmi.runtime.Log;
 
 /**
  * Created by Michael Wang on 9/21/2016.
+ *
+ * Represents a controller for home screen
+ *
  */
 public class HomeScreenController {
     private MainFXApplication mainApplication;
@@ -90,10 +92,9 @@ public class HomeScreenController {
 
     /**
      * passes current user value to this controller and displays all user information
-     * @param auth current user
+     * @param currUser current user
      */
-    public void setUser(User auth) {
-        User currUser = auth;
+    public void setUser(User currUser) {
         usernameLabel.setText("Username: " + currUser.getUsername());
         nameLabel.setText("Name: " + currUser.getUserTitle().toString() + " " + currUser.getName());
         emailLabel.setText("Email: " + currUser.getEmailAddress());

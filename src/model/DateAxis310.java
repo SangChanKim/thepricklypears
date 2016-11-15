@@ -68,7 +68,7 @@ public class DateAxis310 extends Axis<LocalDateTime> {
         private final ChronoUnit INTERVAL;
         private final int        AMOUNT;
 
-        private Interval(final ChronoUnit INTERVAL, final int AMOUNT) {
+        Interval(final ChronoUnit INTERVAL, final int AMOUNT) {
             this.INTERVAL = INTERVAL;
             this.AMOUNT = AMOUNT;
         }
@@ -499,7 +499,7 @@ public class DateAxis310 extends Axis<LocalDateTime> {
 
     private long toMillis(final LocalDateTime DATE_TIME) {
         ZoneOffset offset = DATE_TIME.atZone(ZoneId.systemDefault()).getOffset();
-        return DATE_TIME.toInstant(offset).getEpochSecond() * 1000l;
+        return DATE_TIME.toInstant(offset).getEpochSecond() * 1000L;
     }
 
     private LocalDateTime toLocalDateTime(final long MILLIS) {

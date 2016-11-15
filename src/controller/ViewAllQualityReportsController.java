@@ -15,15 +15,13 @@ import java.util.List;
 
 /**
  * Created by sang on 10/26/16.
+ *
+ * Represents a controller for view all quality
  */
 public class ViewAllQualityReportsController {
     private MainFXApplication mainApplication;
 
     private User currUser;
-
-    /*  **********************
-            References to the FXML widgets in the .fxml file
-        */
 
     @FXML
     private Button homeButton;
@@ -54,11 +52,10 @@ public class ViewAllQualityReportsController {
 
 
     /**
-     * puts all reports into the table
+     * Puts all reports into the table
      * @param reports list of all water source reports in the system
      */
     public void setReports(List<WaterQualityReport> reports) {
-        List<WaterQualityReport> reports1 = reports;
         ObservableList<WaterQualityReport> obsReports = FXCollections.observableArrayList(reports);
 
         reportNumCol.setCellValueFactory(
@@ -95,7 +92,7 @@ public class ViewAllQualityReportsController {
 
 
     /**
-     * called when the user clicks Home
+     * Called when the user clicks Home
      */
     @FXML
     public void onHomePressed() {
@@ -104,16 +101,14 @@ public class ViewAllQualityReportsController {
     }
 
     public void setMainApp (MainFXApplication main) {
-
-        System.out.println("MAIN"); mainApplication = main;
+        mainApplication = main;
     }
 
     /**
-     * passes current user value to this controller
+     * Passes current user value to this controller
      * @param auth current user
      */
     public void setUser(User auth) {
         currUser = auth;
-        //usernameLabel.setText(currUser.getUsername());
     }
 }

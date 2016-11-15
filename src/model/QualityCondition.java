@@ -2,6 +2,8 @@ package model;
 
 /**
  * Created by Sang on 10/26/16.
+ *
+ * Represents water quality conditions
  */
 public enum QualityCondition {
 

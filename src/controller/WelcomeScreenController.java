@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 
 /**
  * Created by sang on 9/19/16.
+ *
+ * Represents a controller for the welcome screen
  */
 public class WelcomeScreenController {
 

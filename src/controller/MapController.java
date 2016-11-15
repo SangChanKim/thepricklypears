@@ -24,6 +24,8 @@ import java.util.ResourceBundle;
 
 /**
  * Created by Victor on 10/18/2016.
+ *
+ * Represents a controller for our Google Map View
  */
 public class MapController implements Initializable, MapComponentInitializedListener {
 
@@ -65,8 +67,8 @@ public class MapController implements Initializable, MapComponentInitializedList
     @FXML
     private Button viewHistoricalReportButton;
 
-    private final int CENTERLATITUDE = 34;
-    private final int CENTERLONGITUDE = -88;
+    private final int CENTER_LATITUDE = 34;
+    private final int CENTER_LONGITUDE = -88;
 
     /**
      * sets main application
@@ -88,7 +90,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         selectedPin.setText(pinText);
 
         //set up the center location for the map
-        LatLong center = new LatLong(CENTERLATITUDE, CENTERLONGITUDE);
+        LatLong center = new LatLong(CENTER_LATITUDE, CENTER_LONGITUDE);
 
         options.center(center)
                 .zoom(9)
@@ -105,7 +107,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         //place pins on locations
         updateMap();
 
-        //logic and callback for placing a pseudopin
+        //logic and callback for placing a pseudo pin
         map.addUIEventHandler(UIEventType.click, (JSObject obj) -> {
                         LatLong ll = new LatLong((JSObject) obj.getMember("latLng"));
                         pseudoLocation = new Location(ll.getLatitude(), ll.getLongitude(), "");

@@ -17,8 +17,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+
 /**
- * Created by Valerie on 11/7/2016.
+ * Created by Valerie on 11/8/2016.
+ *
+ * Represents a controller for historic report creation's options
  */
 public class HistoricReportOptionsScreenController {
 
@@ -27,7 +31,6 @@ public class HistoricReportOptionsScreenController {
     private User currUser;
 
     private Location pseudoLocation;
-
 
     /*  **********************
             References to the FXML widgets in the .fxml file
@@ -79,7 +82,7 @@ public class HistoricReportOptionsScreenController {
             Location thisLoc = new Location(
                     Double.parseDouble(latitudeTextField.getText()),
                     Double.parseDouble(longitudeTextField.getText()),
-                    locationTextField.getText().toString());
+                    locationTextField.getText());
             Date startDate = Date.from(startDatePicker.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
             Date endDate = Date.from(endDatePicker.getValue().atStartOfDay().plusDays((long)1).atZone(ZoneId.systemDefault()).toInstant());
             for (WaterQualityReport report : qualityReports) {

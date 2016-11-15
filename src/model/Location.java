@@ -3,6 +3,8 @@ package model;
 
 /**
  * Created by Victor on 10/18/2016.
+ *
+ * Represents a location on the map
  */
 public class Location {
 
@@ -12,8 +14,8 @@ public class Location {
 
     /**
      * creates a location
-     * @param latitude latitude coord
-     * @param longitude longitude coord
+     * @param latitude latitude coordinate
+     * @param longitude longitude coordinate
      * @param title name of location
      */
     public Location(double latitude, double longitude, String title) {
@@ -44,7 +46,9 @@ public class Location {
      * @return whether they are equal or not
      */
     public boolean equals(Location l2) {
-        if (l2 != null && (this.getLatitude() == l2.getLatitude() && this.getLongitude() == l2.getLongitude()) && (this.getTitle().equals(l2.getTitle()))) {
+        if (l2 != null && (this.getLatitude() == l2.getLatitude()
+                && this.getLongitude() == l2.getLongitude())
+                && (this.getTitle().equals(l2.getTitle()))) {
             return true;
         }
         return false;

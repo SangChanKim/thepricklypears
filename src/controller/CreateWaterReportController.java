@@ -16,14 +16,17 @@ import model.WaterSourceReport;
 
 import java.util.Date;
 
+
 /**
  * Created by Valerie on 10/10/2016.
+ *
+ * Represents a controller for water source report creation
  */
 public class CreateWaterReportController {
 
     private MainFXApplication mainApplication;
 
-    private Date date = new Date();
+    private final Date date = new Date();
 
     private int reportNumber;
 
@@ -95,7 +98,7 @@ public class CreateWaterReportController {
                     new Location(
                             Double.parseDouble(latField.getText()),
                             Double.parseDouble(longField.getText()),
-                            locationTextField.getText().toString()),
+                            locationTextField.getText()),
                     waterTypeComboBox.getValue(),
                     conditionComboBox.getValue()));
 
@@ -160,10 +163,9 @@ public class CreateWaterReportController {
      * @param pseudo the pseudo location
      */
     public void setPseudoLocation(Location pseudo) {
-        Location pseudoLocation = pseudo;
-        if (pseudoLocation != null) {
-            latField.setText("" + pseudoLocation.getLatitude());
-            longField.setText("" + pseudoLocation.getLongitude());
+        if (pseudo != null) {
+            latField.setText("" + pseudo.getLatitude());
+            longField.setText("" + pseudo.getLongitude());
         }
     }
 

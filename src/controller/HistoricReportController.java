@@ -19,6 +19,8 @@ import java.util.List;
 
 /**
  * Created by Valerie on 11/8/2016.
+ *
+ * Represents a controller for historic report creation
  */
 public class HistoricReportController {
 
@@ -55,9 +57,9 @@ public class HistoricReportController {
 
     /**
      * set up date range and list of reports to display
-     * @param startDate
-     * @param endDate
-     * @param reports
+     * @param startDate the start date of our trend
+     * @param endDate the end date of our trend
+     * @param reports the number of reports we want to generate on
      */
     public void setDateAndData(Date startDate, Date endDate, List<WaterQualityReport> reports) {
         this.reports = reports;
@@ -106,15 +108,6 @@ public class HistoricReportController {
 
     }
 
-
-
-    /**
-     * called automatically after load
-     */
-    @FXML
-    private void initialize() {
-
-    }
 
     /**
      * called when the user clicks Back to Map

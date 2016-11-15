@@ -1,8 +1,6 @@
 package controller;
 
 import fxapp.MainFXApplication;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -14,6 +12,8 @@ import model.UserType;
 
 /**
  * Created by sang on 9/19/16.
+ *
+ * Represents a controller for the registration screen
  */
 public class RegistrationScreenController {
 

@@ -18,8 +18,8 @@ public class User {
     private final StringProperty emailAddress = new SimpleStringProperty();
     private final StringProperty homeAddress = new SimpleStringProperty();
     private final StringProperty phoneNumber = new SimpleStringProperty();
-    private final SimpleObjectProperty<UserType> userType = new SimpleObjectProperty<UserType>();
-    private final SimpleObjectProperty<UserTitle> userTitle = new SimpleObjectProperty<UserTitle>();
+    private final SimpleObjectProperty<UserType> userType = new SimpleObjectProperty<>();
+    private final SimpleObjectProperty<UserTitle> userTitle = new SimpleObjectProperty<>();
 
 
     /**

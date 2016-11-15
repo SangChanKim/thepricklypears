@@ -14,9 +14,6 @@ import javafx.stage.Stage;
 import model.*;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -129,7 +126,7 @@ public class MainFXApplication extends Application {
                     String user = map.get("user");
                     int reportNumber = Integer.parseInt(map.get("reportNumber"));
                     double lat = Double.parseDouble(map.get("lat"));
-                    double longg = Double.parseDouble(map.get("long"));
+                    double longitude = Double.parseDouble(map.get("long"));
                     String locationTitle = map.get("locationTitle");
 
                     String waterTypeStr = map.get("waterType");
@@ -156,7 +153,7 @@ public class MainFXApplication extends Application {
                     WaterSourceReport report = new WaterSourceReport(user,
                             reportNumber,
                             date,
-                            new Location(lat, longg, locationTitle),
+                            new Location(lat, longitude, locationTitle),
                             realType,
                             realCondition);
                     waterSourceReports.add(report);
@@ -195,7 +192,7 @@ public class MainFXApplication extends Application {
                     String user = map.get("user");
                     int reportNumber = Integer.parseInt(map.get("reportNumber"));
                     double lat = Double.parseDouble(map.get("lat"));
-                    double longg = Double.parseDouble(map.get("long"));
+                    double longitude = Double.parseDouble(map.get("long"));
                     String locationTitle = map.get("locationTitle");
 
                     String qualityConditionStr = map.get("qualityCondition");
@@ -216,7 +213,7 @@ public class MainFXApplication extends Application {
                     WaterQualityReport report = new WaterQualityReport(user,
                             reportNumber,
                             date,
-                            new Location(lat, longg, locationTitle),
+                            new Location(lat, longitude, locationTitle),
                             realType,
                             virus,
                             contaminant);
@@ -244,14 +241,14 @@ public class MainFXApplication extends Application {
 
 
     /**
-     * Allows RegistrationController to add user to pseudo-backen und of authorized users
+     * Allows RegistrationController to add user to pseudo-backend und of authorized users
      * @param newUser the user to add
      * @return whether the new user was added or not
      */
     public boolean addAuthUser(User newUser) {
         Firebase usersRef = db.child("users").child(newUser.getUsername());
 
-        Map<String, String> userDataMap = new HashMap<String, String>();
+        Map<String, String> userDataMap = new HashMap<>();
         userDataMap.put("name", newUser.getName());
         userDataMap.put("username", newUser.getUsername());
         userDataMap.put("password", newUser.getPassword());
@@ -290,9 +287,9 @@ public class MainFXApplication extends Application {
     /**
      * Checks database and authenticates user accordingly
      *
-     * @param user
-     * @param pass
-     * @return
+     * @param user the username to authenticate
+     * @param pass the password to authenticate
+     * @return whether the user was authenticated or not
      */
     public boolean authenticate(String user, String pass) {
         passwordIsValid = false;
@@ -349,7 +346,7 @@ public class MainFXApplication extends Application {
             return false;
         } else {
             waterSourceReports.add(newReport);
-            Map<String, String> reportDataMap = new HashMap<String, String>();
+            Map<String, String> reportDataMap = new HashMap<>();
             reportDataMap.put("reportNumber", newReport.getReportNumber().toString());
             reportDataMap.put("waterCondition", newReport.getWaterCondition().toString());
             reportDataMap.put("user", newReport.getUsername());
@@ -362,7 +359,7 @@ public class MainFXApplication extends Application {
             currWaterSourceReportNum++;
             db.child("waterSourceReports").child("maxReportNum").setValue(currWaterSourceReportNum);
 
-            LOGGER.log(Level.INFO, "Persisting " + newReport.toString() + " to Firebase");
+            LOGGER.log(Level.INFO, "Persisting " + newReport.toString() + " to FireBase");
             return true;
         }
     }
@@ -377,7 +374,7 @@ public class MainFXApplication extends Application {
             return false;
         } else {
             waterQualityReports.add(newQualityReport);
-            Map<String, String> reportDataMap = new HashMap<String, String>();
+            Map<String, String> reportDataMap = new HashMap<>();
         reportDataMap.put("reportNumber", newQualityReport.getReportNumber().toString());
             reportDataMap.put("qualityCondition", newQualityReport.getQualityCondition().toString());
             reportDataMap.put("user", newQualityReport.getUsername());
@@ -391,7 +388,7 @@ public class MainFXApplication extends Application {
             currWaterQualityReportNum++;
             db.child("waterQualityReports").child("maxReportNum").setValue(currWaterQualityReportNum);
 
-            LOGGER.log(Level.INFO, "Persisting " + newQualityReport.toString() + " to Firebase");
+            LOGGER.log(Level.INFO, "Persisting " + newQualityReport.toString() + " to FireBase");
             return true;
         }
     }
