@@ -1,12 +1,11 @@
 package fxapp;
 
 
-import model.Location;
-import model.User;
-import model.UserTitle;
-import model.UserType;
+import model.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Date;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -47,6 +46,48 @@ public class PricklyPearsTest {
                 location1.equals(location6));
 
         assertFalse("Location is null, so equals should be false", location1.equals(null));
+    }
+
+    /**
+     * Michael Wang's JUnits
+     */
+
+    @Test
+    public void testWaterSourceReportEquals() {
+        WaterSourceReport report1 = new WaterSourceReport("root", 1, new Date(1000000),
+                new Location(10.2, 15, "Georgia"), WaterType.BOTTLED, WaterCondition.POTABLE);
+
+        WaterSourceReport report2 = new WaterSourceReport("root", 1, new Date(1000000),
+                new Location(10.2, 15, "Georgia"), WaterType.BOTTLED, WaterCondition.POTABLE);
+
+        assertTrue("These should be equal.", report1.equals(report2));
+
+        report2.setUsername("notroot");
+        assertFalse("Reports with different usernames should not be equal.", report1.equals(report2));
+        report2.setUsername("root");
+
+        report2.setReportNumber(2);
+        assertFalse("Reports with different report numbers should not be equal.", report1.equals(report2));
+        report2.setReportNumber(1);
+
+        report2.setDate(new Date(2000000));
+        assertFalse("Reports with different dates should not be equal.", report1.equals(report2));
+        report2.setDate(new Date(1000000));
+
+        report2.setLocation(new Location(10, 10, "notGeorgia"));
+        assertFalse("Reports with different locations should not be equal.", report1.equals(report2));
+        report2.setLocation(new Location(10.2, 15, "Georgia"));
+
+        report2.setWaterType(WaterType.LAKE);
+        assertFalse("Reports with different water types should not be equal.", report1.equals(report2));
+        report2.setWaterType(WaterType.BOTTLED);
+
+        report2.setWaterCondition(WaterCondition.TREATABLE_CLEAR);
+        assertFalse("Reports with different water conditions should not be equal.", report1.equals(report2));
+        report2.setWaterCondition(WaterCondition.POTABLE);
+
+        assertFalse("return false on null water report", report1.equals(null));
+
     }
 
     /**

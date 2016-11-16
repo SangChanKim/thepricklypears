@@ -120,5 +120,20 @@ public class WaterSourceReport {
         this.waterCondition.set(waterCondition);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        WaterSourceReport other = (WaterSourceReport) o;
+        if (other != null) {
+            return (this.getUsername().equals(other.getUsername()))
+                    && (this.getReportNumber().equals(other.getReportNumber()))
+                    && (this.getDate().equals(other.getDate()))
+                    && (this.getLocation().equals(other.getLocation()))
+                    && (this.getWaterType().equals(other.getWaterType()))
+                    && (this.getWaterCondition().equals(other.getWaterCondition()));
+        } else {
+            return false;
+        }
+    }
+
 
 }
