@@ -10,30 +10,37 @@
 
 <BorderPane id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginScreenController">
     <center>
-        <AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="400.0">
-            <children>
-                <TextField id="usernameTextField" fx:id="usernameTextField" layoutX="185.0" layoutY="52.0" />
-            <PasswordField id="passwordTextField" fx:id="passwordTextField" layoutX="186.0" layoutY="111.0" />
-                <Button id="loginButton" fx:id="loginButton" layoutX="228.0" layoutY="182.0" mnemonicParsing="false" onAction="#onLoginPressed" text="Login">
-                    <font>
-                        <Font name="Calibri" size="18.0" />
-                    </font>
-                </Button>
-                <Label layoutX="65.0" layoutY="50.0" text="Username: ">
-                    <font>
-                        <Font name="Calibri" size="24.0" />
-                    </font>
-                </Label>
-                <Label layoutX="69.0" layoutY="109.0" text="Password: ">
-                    <font>
-                        <Font name="Calibri" size="24.0" />
-                    </font>
-                </Label>
-            <Button fx:id="cancelButton" layoutX="119.0" layoutY="182.0" mnemonicParsing="false" onAction="#onCancelPressed" text="Cancel">
-               <font>
-                  <Font name="Calibri" size="18.0" />
-               </font>
+        <AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity"
+                    minHeight="0.0" minWidth="0.0" prefHeight="300.0"
+                    prefWidth="400.0">
+            <TextField id="usernameTextField" fx:id="usernameTextField"
+                       layoutX="185.0" layoutY="52.0"/>
+            <PasswordField id="passwordTextField" fx:id="passwordTextField"
+                           layoutX="186.0" layoutY="111.0"/>
+            <Button id="loginButton" fx:id="loginButton" layoutX="228.0"
+                    layoutY="182.0" mnemonicParsing="false"
+                    onAction="#onLoginPressed" text="Login">
+                <font>
+                    <Font name="Calibri" size="18.0"/>
+                </font>
             </Button>
-            </children></AnchorPane>
+            <Label layoutX="65.0" layoutY="50.0" text="Username: ">
+                <font>
+                    <Font name="Calibri" size="24.0"/>
+                </font>
+            </Label>
+            <Label layoutX="69.0" layoutY="109.0" text="Password: ">
+                <font>
+                    <Font name="Calibri" size="24.0"/>
+                </font>
+            </Label>
+            <Button fx:id="cancelButton" layoutX="119.0" layoutY="182.0"
+                    mnemonicParsing="false" onAction="#onCancelPressed"
+                    text="Cancel">
+                <font>
+                    <Font name="Calibri" size="18.0"/>
+                </font>
+            </Button>
+        </AnchorPane>
     </center>
 </BorderPane>
