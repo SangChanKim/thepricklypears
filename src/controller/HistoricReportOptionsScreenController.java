@@ -7,7 +7,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import model.Location;
-import model.User;
 import model.WaterQualityReport;
 
 
@@ -116,18 +115,10 @@ public class HistoricReportOptionsScreenController {
     }
 
     /**
-     * passes current user value to this controller
-     * @param auth current user
-     */
-    public void setUser(User auth) {
-    }
-
-    /**
      * sets the pseudo location
-     * @param pseudo the pseudo location
+     * @param pseudoLocation the pseudo location
      */
-    public void setPseudoLocation(Location pseudo) {
-        Location pseudoLocation = pseudo;
+    public void setPseudoLocation(Location pseudoLocation) {
         if (pseudoLocation != null) {
             latitudeTextField.setText("" + pseudoLocation.getLatitude());
             longitudeTextField.setText("" + pseudoLocation.getLongitude());

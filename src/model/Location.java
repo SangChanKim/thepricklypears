@@ -42,12 +42,17 @@ public class Location {
 
     /**
      * checks if longitude/latitude and location title are the same for two Locations
-     * @param l2 other Location to compare with
+     * @param o other Location to compare with
      * @return whether they are equal or not
      */
-    public boolean equals(Location l2) {
-        return (l2 != null && (this.getLatitude() == l2.getLatitude()
-                && this.getLongitude() == l2.getLongitude())
-                && (this.getTitle().equals(l2.getTitle())));
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Location) {
+            Location l2 = (Location) o;
+            return (l2 != null && (this.getLatitude() == l2.getLatitude()
+                    && this.getLongitude() == l2.getLongitude())
+                    && (this.getTitle().equals(l2.getTitle())));
+        }
+        return false;
     }
 }

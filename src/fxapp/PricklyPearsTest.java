@@ -45,6 +45,11 @@ public class PricklyPearsTest {
                 location1.equals(location6));
 
         assertFalse("Location is null, so equals should be false", location1.equals(null));
+
+        WaterSourceReport report1 = new WaterSourceReport("root", 1, new Date(1000000),
+                new Location(10.2, 15, "Georgia"), WaterType.BOTTLED, WaterCondition.POTABLE);
+        assertFalse("If what I pass into equals is not an instance of Location, return false",
+                location1.equals(report1));
     }
 
     /**
