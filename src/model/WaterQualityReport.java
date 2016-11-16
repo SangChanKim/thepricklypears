@@ -143,6 +143,9 @@ public class WaterQualityReport implements Comparable<WaterQualityReport> {
     }
 
     public boolean equals(Object o) {
+        if (!(o instanceof WaterQualityReport)) {
+            return false;
+        }
         WaterQualityReport other = (WaterQualityReport) o;
         return other != null && (this.getUsername().equals(other.getUsername()) && this.getReportNumber().equals(other.getReportNumber()) && this.getDate().equals(other.getDate()) && this.getLocation().equals(other.getLocation()) && this.getQualityCondition().equals(other.getQualityCondition()) && this.getVirusPPM().equals(other.getVirusPPM()) && this.getContaminantPPM().equals(other.getContaminantPPM()));
 

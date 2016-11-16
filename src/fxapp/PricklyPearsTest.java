@@ -234,6 +234,8 @@ public class PricklyPearsTest {
 
         assertFalse("null reports should return false", r1.equals(null));
 
+        assertFalse("Comparing it to a non WaterQualityReport object should return false", r1.equals(new Date()));
+
     }
 
 }
