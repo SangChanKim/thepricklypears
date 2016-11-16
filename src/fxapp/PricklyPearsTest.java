@@ -82,6 +82,9 @@ public class PricklyPearsTest {
 
     @Test
     public void testUsersEquals() {
+
+        assertTrue("Null check", u1.equals(null));
+
         assertTrue("User1 and User2 are equal", u1.equals(u2));
 
         assertFalse("User1 and User3 are not equal", u1.equals(u3));
@@ -90,7 +93,47 @@ public class PricklyPearsTest {
 
         assertTrue("User2 and User 3 are equal after User 3 moved", u2.equals(u3));
 
-        assertTrue("Null check", u1.equals(null));
+        u2.setEmailAddress("curiousbob@email.com");
+
+        assertFalse("User2 changed email address; User2 and User3 are not equal", u2.equals(u3));
+
+        u3.setEmailAddress(u2.getEmailAddress());
+        u3.setName("George");
+
+        assertFalse("User3 changed email address but changed name; User2 and User3 are not equal", u2.equals(u3));
+
+        u3.setName(u2.getName());
+        u3.setUserType(UserType.MANAGER);
+
+        assertFalse("User3 switched name back, but got a promotion; User2 and User 3 are not equal", u2.equals(u3));
+
+        u2.setUserType(UserType.MANAGER);
+
+        assertTrue("User2 also got a promotion; User2 and User3 are equal", u2.equals(u3));
+
+        u2.setPhoneNumber("1112223333");
+
+        assertFalse("User2 got a new phone; User2 and User3 are not equal", u2.equals(u3));
+
+        u3.setPhoneNumber("1112223333");
+
+        assertTrue("User3 also switched phones; User2 and User3 are equal again", u2.equals(u3));
+
+        u2.setUserTitle(UserTitle.MISTER);
+
+        assertFalse("User2 lost his degree; User2 and User3 are not equal",u2.equals(u3));
+
+        u1.setUsername("vvvvvvvv");
+
+        assertFalse("User1 changed his username; User1 and User3 are not the same", u1.equals(u3));
+
+        u1.setUsername("vchen36");
+        u1.setPassword("bestpassword2016");
+        u3.setPassword("bestpassword2016");
+
+        assertTrue("Just kidding, User1 changed passwords and so did User3", u1.equals(u3));
+
+
     }
 
 }
