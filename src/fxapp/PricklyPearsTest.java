@@ -224,6 +224,8 @@ public class PricklyPearsTest {
         assertFalse("Reports with different Contaminant PPMs should return false", r1.equals(r2));
         r1.setContaminantPPM(58);
 
+        assertFalse("null reports should return false", r1.equals(null));
+
     }
 
 }
