@@ -46,12 +46,8 @@ public class Location {
      * @return whether they are equal or not
      */
     public boolean equals(Location l2) {
-        if (l2 != null && (this.getLatitude() == l2.getLatitude()
+        return (l2 != null && (this.getLatitude() == l2.getLatitude()
                 && this.getLongitude() == l2.getLongitude())
-                && (this.getTitle().equals(l2.getTitle()))) {
-            return true;
-        }
-        return false;
+                && (this.getTitle().equals(l2.getTitle())));
     }
-
 }
