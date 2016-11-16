@@ -139,7 +139,21 @@ public class User {
      */
     @Override
     public boolean equals(Object o) {
+        if (!(o instanceof User)) {
+            return false;
+        }
         User other = (User) o;
-        return other != null && (this.getName().equals(other.getName())) && (this.getUsername().equals(other.getUsername())) && (this.getPassword().equals(other.getPassword())) && (this.getEmailAddress().equals(other.getEmailAddress())) && (this.getHomeAddress().equals(other.getHomeAddress())) && (this.getUserTitle().equals(other.getUserTitle())) && (this.getUserType().equals(other.getUserType())) && (this.getPhoneNumber().equals(other.getPhoneNumber()));
+        if (other != null) {
+            return (this.getName().equals(other.getName()))
+                    && (this.getUsername().equals(other.getUsername()))
+                    && (this.getPassword().equals(other.getPassword()))
+                    && (this.getEmailAddress().equals(other.getEmailAddress()))
+                    && (this.getHomeAddress().equals(other.getHomeAddress()))
+                    && (this.getUserTitle().equals(other.getUserTitle()))
+                    && (this.getUserType().equals(other.getUserType()))
+                    && (this.getPhoneNumber().equals(other.getPhoneNumber()));
+        } else {
+            return false;
+        }
     }
 }
