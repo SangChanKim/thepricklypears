@@ -122,6 +122,9 @@ public class WaterSourceReport {
 
     @Override
     public boolean equals(Object o) {
+        if (!(o instanceof WaterSourceReport)) {
+            return false;
+        }
         WaterSourceReport other = (WaterSourceReport) o;
         return other != null && (this.getUsername().equals(other.getUsername())) && (this.getReportNumber().equals(other.getReportNumber())) && (this.getDate().equals(other.getDate())) && (this.getLocation().equals(other.getLocation())) && (this.getWaterType().equals(other.getWaterType())) && (this.getWaterCondition().equals(other.getWaterCondition()));
     }
