@@ -22,9 +22,6 @@ public class MainFXApplication extends Application {
 
     private static final Logger LOGGER = Logger.getLogger("MainFXApplication");
 
-    /** the main container for the application window */
-    private Stage mainScreen;
-
     private BorderPane rootLayout;
 
     private User currUser;
@@ -49,7 +46,8 @@ public class MainFXApplication extends Application {
 
         this.db = new Firebase("https://thepricklypears-9a5e4.firebaseio.com/");
 
-        mainScreen = primaryStage;
+        /* the main container for the application window */
+        Stage mainScreen = primaryStage;
         authUsers = new ArrayList<>();
 
 

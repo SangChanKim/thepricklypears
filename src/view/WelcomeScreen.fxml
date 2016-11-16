@@ -9,26 +9,33 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WelcomeScreenController">
    <center>
-    <AnchorPane id="welcomePane" fx:id="welcomePane" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button id="enterLoginButton" fx:id="enterLoginButton" layoutX="266.0" layoutY="328.0" mnemonicParsing="false" onAction="#onLoginPressed" text="Login">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button id="enterRegistrationButton" fx:id="enterRegistrationButton" layoutX="416.0" layoutY="328.0" mnemonicParsing="false" onAction="#onRegisterPressed" text="Register">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="222.0" text="Welcome!" AnchorPane.bottomAnchor="308.0" AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="294.0" AnchorPane.topAnchor="222.0">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin></AnchorPane>
+       <AnchorPane id="welcomePane" fx:id="welcomePane" minHeight="0.0"
+                   minWidth="0.0" BorderPane.alignment="CENTER">
+           <BorderPane.margin>
+               <Insets/>
+           </BorderPane.margin>
+           <Button id="enterLoginButton" fx:id="enterLoginButton"
+                   layoutX="266.0" layoutY="328.0" mnemonicParsing="false"
+                   onAction="#onLoginPressed" text="Login">
+              <font>
+                  <Font size="24.0"/>
+              </font>
+           </Button>
+           <Button id="enterRegistrationButton" fx:id="enterRegistrationButton"
+                   layoutX="416.0" layoutY="328.0" mnemonicParsing="false"
+                   onAction="#onRegisterPressed" text="Register">
+              <font>
+                  <Font size="24.0"/>
+              </font>
+           </Button>
+           <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="222.0"
+                  text="Welcome!" AnchorPane.bottomAnchor="308.0"
+                  AnchorPane.leftAnchor="294.0" AnchorPane.rightAnchor="294.0"
+                  AnchorPane.topAnchor="222.0">
+              <font>
+                  <Font size="48.0"/>
+              </font>
+           </Label>
+       </AnchorPane>
    </center>
 </BorderPane>

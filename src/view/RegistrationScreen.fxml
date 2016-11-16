@@ -11,77 +11,89 @@
 <?import javafx.scene.control.PasswordField?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationScreenController">
   <center>
-    <AnchorPane id="registrationPane" fx:id="registrationPane" prefHeight="700.0" prefWidth="400.0">
-         <children>
-            <Button id="registerButton" fx:id="registerButton" layoutX="248.0" layoutY="484.0" mnemonicParsing="false" onAction="#onRegisterPressed" text="Register">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <TextField id="usernameTextField" fx:id="usernameTextField" layoutX="184.0" layoutY="57.0" />
-            <PasswordField id="passwordTextField" fx:id="passwordTextField" layoutX="184.0" layoutY="111.0" />
-            <Label layoutX="89.0" layoutY="56.0" text="Username:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="94.0" layoutY="110.0" text="Password:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="152.0" layoutY="14.0" text="Registration">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <PasswordField id="confirmPasswordTextField" fx:id="confirmPasswordTextField" layoutX="184.0" layoutY="155.0" />
-            <Label layoutX="25.0" layoutY="154.0" text="Confirm Password:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="118.0" layoutY="290.0" text="Name:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="123.0" layoutY="331.0" text="Email:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="100.0" layoutY="371.0" text="Address:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="45.0" layoutY="411.0" text="Phone Number:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="nameTextField" layoutX="184.0" layoutY="289.0" />
-            <TextField fx:id="emailAddressTextField" layoutX="184.0" layoutY="329.0" />
-            <TextField fx:id="homeAddressTextField" layoutX="184.0" layoutY="369.0" />
-            <TextField fx:id="phoneNumberTextField" layoutX="184.0" layoutY="409.0" />
-            <Button layoutX="75.0" layoutY="484.0" mnemonicParsing="false" onAction="#onCancelPressed" text="Cancel">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <ComboBox fx:id="titleComboBox" layoutX="184.0" layoutY="244.0" prefWidth="150.0" />
-            <Label layoutX="133.0" layoutY="246.0" text="Title:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="userTypeComboBox" layoutX="184.0" layoutY="198.0" prefWidth="150.0" />
-            <Label layoutX="88.0" layoutY="200.0" text="User Type:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
+      <AnchorPane id="registrationPane" fx:id="registrationPane"
+                  prefHeight="700.0" prefWidth="400.0">
+          <Button id="registerButton" fx:id="registerButton" layoutX="248.0"
+                  layoutY="484.0" mnemonicParsing="false"
+                  onAction="#onRegisterPressed" text="Register">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Button>
+          <TextField id="usernameTextField" fx:id="usernameTextField"
+                     layoutX="184.0" layoutY="57.0"/>
+          <PasswordField id="passwordTextField" fx:id="passwordTextField"
+                         layoutX="184.0" layoutY="111.0"/>
+          <Label layoutX="89.0" layoutY="56.0" text="Username:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <Label layoutX="94.0" layoutY="110.0" text="Password:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <Label layoutX="152.0" layoutY="14.0" text="Registration">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <PasswordField id="confirmPasswordTextField"
+                         fx:id="confirmPasswordTextField" layoutX="184.0"
+                         layoutY="155.0"/>
+          <Label layoutX="25.0" layoutY="154.0" text="Confirm Password:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <Label layoutX="118.0" layoutY="290.0" text="Name:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <Label layoutX="123.0" layoutY="331.0" text="Email:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <Label layoutX="100.0" layoutY="371.0" text="Address:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <Label layoutX="45.0" layoutY="411.0" text="Phone Number:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <TextField fx:id="nameTextField" layoutX="184.0" layoutY="289.0"/>
+          <TextField fx:id="emailAddressTextField" layoutX="184.0"
+                     layoutY="329.0"/>
+          <TextField fx:id="homeAddressTextField" layoutX="184.0"
+                     layoutY="369.0"/>
+          <TextField fx:id="phoneNumberTextField" layoutX="184.0"
+                     layoutY="409.0"/>
+          <Button layoutX="75.0" layoutY="484.0" mnemonicParsing="false"
+                  onAction="#onCancelPressed" text="Cancel">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Button>
+          <ComboBox fx:id="titleComboBox" layoutX="184.0" layoutY="244.0"
+                    prefWidth="150.0"/>
+          <Label layoutX="133.0" layoutY="246.0" text="Title:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+          <ComboBox fx:id="userTypeComboBox" layoutX="184.0" layoutY="198.0"
+                    prefWidth="150.0"/>
+          <Label layoutX="88.0" layoutY="200.0" text="User Type:">
+              <font>
+                <Font size="18.0"/>
+              </font>
+          </Label>
+      </AnchorPane>
   </center>
 </BorderPane>

@@ -10,69 +10,78 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UpdateProfileController">
    <center>
-        <AnchorPane id="updatePane" fx:id="updatePane" prefHeight="700.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-            <children>
-                <Button id="updateButton" fx:id="updateButton" layoutX="248.0" layoutY="392.0" mnemonicParsing="false" onAction="#onEditPressed" text="Update">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Button>
-                <Label layoutX="89.0" layoutY="56.0" text="Username:">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <Label layoutX="152.0" layoutY="14.0" text="Update Profile">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <Label layoutX="121.0" layoutY="195.0" text="Name:">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <Label layoutX="126.0" layoutY="237.0" text="Email:">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <Label layoutX="104.0" layoutY="280.0" text="Address:">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <Label layoutX="46.0" layoutY="324.0" text="Phone Number:">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="nameTextField" layoutX="184.0" layoutY="193.0" />
-                <TextField fx:id="emailAddressTextField" layoutX="184.0" layoutY="235.0" />
-                <TextField fx:id="homeAddressTextField" layoutX="184.0" layoutY="278.0" />
-                <TextField fx:id="phoneNumberTextField" layoutX="184.0" layoutY="322.0" />
-                <Button layoutX="75.0" layoutY="392.0" mnemonicParsing="false" onAction="#onCancelPressed" text="Cancel">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Button>
-                <ComboBox fx:id="titleComboBox" layoutX="184.0" layoutY="150.0" prefWidth="150.0" />
-                <Label layoutX="134.0" layoutY="152.0" text="Title:">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <ComboBox fx:id="userTypeComboBox" layoutX="184.0" layoutY="107.0" prefWidth="150.0" />
-                <Label layoutX="90.0" layoutY="109.0" text="User Type:">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-            <Label fx:id="currUserLabel" layoutX="185.0" layoutY="56.0" prefHeight="21.0" prefWidth="186.0" text="Label">
+       <AnchorPane id="updatePane" fx:id="updatePane" prefHeight="700.0"
+                   prefWidth="400.0" BorderPane.alignment="CENTER">
+           <Button id="updateButton" fx:id="updateButton" layoutX="248.0"
+                   layoutY="392.0" mnemonicParsing="false"
+                   onAction="#onEditPressed" text="Update">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                   <Font size="18.0"/>
                </font>
-            </Label>
-            </children></AnchorPane>
+           </Button>
+           <Label layoutX="89.0" layoutY="56.0" text="Username:">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <Label layoutX="152.0" layoutY="14.0" text="Update Profile">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <Label layoutX="121.0" layoutY="195.0" text="Name:">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <Label layoutX="126.0" layoutY="237.0" text="Email:">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <Label layoutX="104.0" layoutY="280.0" text="Address:">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <Label layoutX="46.0" layoutY="324.0" text="Phone Number:">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <TextField fx:id="nameTextField" layoutX="184.0" layoutY="193.0"/>
+           <TextField fx:id="emailAddressTextField" layoutX="184.0"
+                      layoutY="235.0"/>
+           <TextField fx:id="homeAddressTextField" layoutX="184.0"
+                      layoutY="278.0"/>
+           <TextField fx:id="phoneNumberTextField" layoutX="184.0"
+                      layoutY="322.0"/>
+           <Button layoutX="75.0" layoutY="392.0" mnemonicParsing="false"
+                   onAction="#onCancelPressed" text="Cancel">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Button>
+           <ComboBox fx:id="titleComboBox" layoutX="184.0" layoutY="150.0"
+                     prefWidth="150.0"/>
+           <Label layoutX="134.0" layoutY="152.0" text="Title:">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <ComboBox fx:id="userTypeComboBox" layoutX="184.0" layoutY="107.0"
+                     prefWidth="150.0"/>
+           <Label layoutX="90.0" layoutY="109.0" text="User Type:">
+               <font>
+                   <Font size="18.0"/>
+               </font>
+           </Label>
+           <Label fx:id="currUserLabel" layoutX="185.0" layoutY="56.0"
+                  prefHeight="21.0" prefWidth="186.0" text="Label">
+              <font>
+                  <Font name="System Bold" size="18.0"/>
+              </font>
+           </Label>
+       </AnchorPane>
    </center>
 </BorderPane>

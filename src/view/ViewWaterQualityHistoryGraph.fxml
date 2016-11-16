@@ -11,26 +11,22 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HistoricReportController">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <LineChart fx:id="waterQualityHistoryGraph">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </LineChart>
-         </children>
-      </VBox>
+       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+           <LineChart fx:id="waterQualityHistoryGraph">
+               <xAxis>
+                   <CategoryAxis side="BOTTOM"/>
+               </xAxis>
+               <yAxis>
+                   <NumberAxis side="LEFT"/>
+               </yAxis>
+           </LineChart>
+       </VBox>
    </center>
    <top>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Water Quality History" />
-            <Label fx:id="yearAndLocationLabel" text="Year and Location" />
-         </children>
-      </VBox>
+       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+           <Label text="Water Quality History"/>
+           <Label fx:id="yearAndLocationLabel" text="Year and Location"/>
+       </VBox>
    </top>
    <bottom>
       <Button fx:id="backToMapButton" mnemonicParsing="false" onAction="#onBackPressed" text="Back to Map" BorderPane.alignment="CENTER">

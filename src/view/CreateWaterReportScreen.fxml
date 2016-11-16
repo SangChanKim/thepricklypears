@@ -22,53 +22,76 @@
       </Label>
    </top>
    <center>
-      <GridPane alignment="CENTER" hgap="30.0" prefHeight="394.0" prefWidth="589.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="Location:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <Label text="Date:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <Label text="Name:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-            <Label text="Type:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-            <Label text="Condition:" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#onCancelPressed" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-            <Button fx:id="createButton" mnemonicParsing="false" onAction="#onCreatePressed" text="Create" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label text="Report #:" GridPane.halignment="RIGHT" />
-            <Label fx:id="reportNumberLabel" text="#" GridPane.columnIndex="1" />
-            <Label fx:id="usernameLabel" text="User Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="waterTypeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox fx:id="conditionComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label fx:id="dateLabel" text="Date" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="locationTextField" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Latitude/Longitude:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <children>
-                  <TextField fx:id="latField" maxWidth="100.0">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <TextField fx:id="longField" maxWidth="100.0">
-                     <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-         </children>
-      </GridPane>
+       <GridPane alignment="CENTER" hgap="30.0" prefHeight="394.0"
+                 prefWidth="589.0" BorderPane.alignment="CENTER">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                  prefWidth="100.0"/>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+                                  prefWidth="100.0"/>
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0"
+                               vgrow="SOMETIMES"/>
+           </rowConstraints>
+           <Label text="Location:" GridPane.halignment="RIGHT"
+                  GridPane.rowIndex="3"/>
+           <Label text="Date:" GridPane.halignment="RIGHT"
+                  GridPane.rowIndex="2"/>
+           <Label text="Name:" GridPane.halignment="RIGHT"
+                  GridPane.rowIndex="1"/>
+           <Label text="Type:" GridPane.halignment="RIGHT"
+                  GridPane.rowIndex="5"/>
+           <Label text="Condition:" GridPane.halignment="RIGHT"
+                  GridPane.rowIndex="6"/>
+           <Button fx:id="cancelButton" mnemonicParsing="false"
+                   onAction="#onCancelPressed" text="Cancel"
+                   GridPane.halignment="RIGHT" GridPane.rowIndex="7"/>
+           <Button fx:id="createButton" mnemonicParsing="false"
+                   onAction="#onCreatePressed" text="Create"
+                   GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+           <Label text="Report #:" GridPane.halignment="RIGHT"/>
+           <Label fx:id="reportNumberLabel" text="#" GridPane.columnIndex="1"/>
+           <Label fx:id="usernameLabel" text="User Name"
+                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+           <ComboBox fx:id="waterTypeComboBox" prefWidth="150.0"
+                     GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+           <ComboBox fx:id="conditionComboBox" prefWidth="150.0"
+                     GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+           <Label fx:id="dateLabel" text="Date" GridPane.columnIndex="1"
+                  GridPane.rowIndex="2"/>
+           <TextField fx:id="locationTextField" maxWidth="-Infinity"
+                      GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+           <Label text="Latitude/Longitude:" GridPane.halignment="RIGHT"
+                  GridPane.rowIndex="4"/>
+           <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0"
+                 GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <TextField fx:id="latField" maxWidth="100.0">
+                   <HBox.margin>
+                       <Insets right="10.0"/>
+                   </HBox.margin>
+               </TextField>
+               <Separator orientation="VERTICAL" prefHeight="200.0"/>
+               <TextField fx:id="longField" maxWidth="100.0">
+                   <HBox.margin>
+                       <Insets left="10.0" right="10.0"/>
+                   </HBox.margin>
+               </TextField>
+           </HBox>
+       </GridPane>
    </center>
 </BorderPane>
