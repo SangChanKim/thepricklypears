@@ -47,7 +47,6 @@ public class MainFXApplication extends Application {
         this.db = new Firebase("https://thepricklypears-9a5e4.firebaseio.com/");
 
         /* the main container for the application window */
-        Stage mainScreen = primaryStage;
         authUsers = new ArrayList<>();
 
 
@@ -224,7 +223,7 @@ public class MainFXApplication extends Application {
             }
         });
 
-        initRootLayout(mainScreen);
+        initRootLayout(primaryStage);
         showWelcomeScreen();
     }
 

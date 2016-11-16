@@ -121,11 +121,10 @@ public class HistoricReportOptionsScreenController {
      * @param pseudo the pseudo location
      */
     public void setPseudoLocation(Location pseudo) {
-        Location pseudoLocation = pseudo;
-        if (pseudoLocation != null) {
-            latitudeTextField.setText("" + pseudoLocation.getLatitude());
-            longitudeTextField.setText("" + pseudoLocation.getLongitude());
-            locationTextField.setText("" + pseudoLocation.getTitle());
+        if (pseudo != null) {
+            latitudeTextField.setText("" + pseudo.getLatitude());
+            longitudeTextField.setText("" + pseudo.getLongitude());
+            locationTextField.setText("" + pseudo.getTitle());
         }
     }
 }
