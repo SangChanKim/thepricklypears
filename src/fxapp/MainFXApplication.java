@@ -482,11 +482,7 @@ public class MainFXApplication extends Application {
 
     public void showHomeScreen(String username) {
         try {
-            for (User auth : authUsers) {
-                if (auth.getUsername().equals(username)) {
-                    currUser = auth;
-                }
-            }
+            authUsers.stream().filter(auth -> auth.getUsername().equals(username)).forEach(auth -> currUser = auth);
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainFXApplication.class.getResource("../view/HomeScreen.fxml"));

@@ -16,7 +16,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 /**
@@ -81,13 +81,7 @@ public class HistoricReportOptionsScreenController {
                     locationTextField.getText());
             Date startDate = Date.from(startDatePicker.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
             Date endDate = Date.from(endDatePicker.getValue().atStartOfDay().plusDays((long)1).atZone(ZoneId.systemDefault()).toInstant());
-            for (WaterQualityReport report : qualityReports) {
-                if (thisLoc.equals(report.getLocation())) {
-                    if (report.getDate().after(startDate) && report.getDate().before(endDate)) {
-                        thisLocQualityReports.add(report);
-                    }
-                }
-            }
+            thisLocQualityReports.addAll(qualityReports.stream().filter(report -> thisLoc.equals(report.getLocation())).filter(report -> report.getDate().after(startDate) && report.getDate().before(endDate)).collect(Collectors.toList()));
             if (thisLocQualityReports.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("There are no Water Quality Reports for this location and time period");
