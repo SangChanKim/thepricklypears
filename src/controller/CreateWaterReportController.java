@@ -32,13 +32,13 @@ public class CreateWaterReportController {
 
     private User currUser;
 
-    private static final double LATLOWERBOUND = -90.0;
+    private static final double LAT_LOWER_BOUND = -90.0;
 
-    private static final double LATUPPERBOUND = 90.0;
+    private static final double LAT_UPPER_BOUND = 90.0;
 
-    private static final double LONGLOWERBOUND = -180.0;
+    private static final double LONG_LOWER_BOUND = -180.0;
 
-    private static final double LONGUPPERBOUND = 180.0;
+    private static final double LONG_UPPER_BOUND = 180.0;
 
 
     /*  **********************
@@ -87,10 +87,10 @@ public class CreateWaterReportController {
      */
     @FXML
     public void onCreatePressed() {
-        if ((Double.parseDouble(latField.getText()) >= LATLOWERBOUND)
-                && (Double.parseDouble(latField.getText()) <= LATUPPERBOUND)
-                && (Double.parseDouble(longField.getText()) >= LONGLOWERBOUND)
-                && (Double.parseDouble(longField.getText())<= LONGUPPERBOUND)) {
+        if ((Double.parseDouble(latField.getText()) >= LAT_LOWER_BOUND)
+                && (Double.parseDouble(latField.getText()) <= LAT_UPPER_BOUND)
+                && (Double.parseDouble(longField.getText()) >= LONG_LOWER_BOUND)
+                && (Double.parseDouble(longField.getText())<= LONG_UPPER_BOUND)) {
             mainApplication.addWaterSourceReport(new WaterSourceReport(
                     currUser.getUsername(),
                     reportNumber,

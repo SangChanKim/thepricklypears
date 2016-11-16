@@ -49,9 +49,9 @@ public class Location {
     public boolean equals(Object o) {
         if (o instanceof Location) {
             Location l2 = (Location) o;
-            return (l2 != null && (this.getLatitude() == l2.getLatitude()
+            return (this.getLatitude() == l2.getLatitude()
                     && this.getLongitude() == l2.getLongitude())
-                    && (this.getTitle().equals(l2.getTitle())));
+                    && (this.getTitle().equals(l2.getTitle()));
         }
         return false;
     }

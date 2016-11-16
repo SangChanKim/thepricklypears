@@ -174,11 +174,11 @@ public class PricklyPearsTest {
         assertFalse("User1 changed his username; User1 and User3 are not the same", u1.equals(u3));
 
         u1.setUsername("vchen36");
-        u3.setPassword("bestpassword"); //resetting u3
+        u3.setPassword("bestpassword2020"); //resetting u3
         u3.setUserType(UserType.USER);
         u3.setPhoneNumber("0001115555");
         u3.setEmailAddress(u1.getEmailAddress());
-        u1.setPassword("bestpassword");
+        u1.setPassword("bestpassword2020");
 
 
         assertTrue("Just kidding, User1 changed passwords and so did User3", u1.equals(u3));

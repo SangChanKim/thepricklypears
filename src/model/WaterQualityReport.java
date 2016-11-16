@@ -147,7 +147,7 @@ public class WaterQualityReport implements Comparable<WaterQualityReport> {
             return false;
         }
         WaterQualityReport other = (WaterQualityReport) o;
-        return other != null && (this.getUsername().equals(other.getUsername()) && this.getReportNumber().equals(other.getReportNumber()) && this.getDate().equals(other.getDate()) && this.getLocation().equals(other.getLocation()) && this.getQualityCondition().equals(other.getQualityCondition()) && this.getVirusPPM().equals(other.getVirusPPM()) && this.getContaminantPPM().equals(other.getContaminantPPM()));
+        return (this.getUsername().equals(other.getUsername()) && this.getReportNumber().equals(other.getReportNumber()) && this.getDate().equals(other.getDate()) && this.getLocation().equals(other.getLocation()) && this.getQualityCondition().equals(other.getQualityCondition()) && this.getVirusPPM().equals(other.getVirusPPM()) && this.getContaminantPPM().equals(other.getContaminantPPM()));
 
     }
 
