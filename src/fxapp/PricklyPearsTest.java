@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -174,6 +175,54 @@ public class PricklyPearsTest {
 
         assertTrue("Just kidding, User1 changed passwords and so did User3", u1.equals(u3));
 
+
+    }
+
+
+
+
+    /**
+     * Valerie Avva's JUnits
+     */
+    @Test
+    public void testWaterQualityReportEquals() {
+        Date now = new Date();
+        WaterQualityReport r1 = new WaterQualityReport("val", 0, now,
+                new Location(42.0, 42.0, "Mordor"), QualityCondition.SAFE, 36, 58);
+        WaterQualityReport r2 = new WaterQualityReport("val", 0, now,
+                new Location(42.0, 42.0, "Mordor"), QualityCondition.SAFE, 36, 58);
+
+        assertTrue("Two water reports with the same data are the same", r1.equals(r2));
+
+        r1.setUsername("root");
+        assertFalse("Reports with different usernames should return false", r1.equals(r2));
+        r1.setUsername("val");
+
+        r1.setReportNumber(23);
+        assertFalse("Reports with different report numbers should return false", r1.equals(r2));
+        r1.setReportNumber(0);
+
+        //Date temp = new Date(2015, 3, 23);
+        Date temp = new Date(2000000);
+        r1.setDate(temp);
+        assertFalse("Reports with different dates should return false", r1.equals(r2));
+        r1.setDate(now);
+
+        r1.setLocation(new Location(52.0, 16.0, "The Shire"));
+        assertFalse("Reports with different locations should return false", r1.equals(r2));
+        r1.setLocation(new Location(42.0, 42.0, "Mordor"));
+
+        r1.setWaterCondition(QualityCondition.UNSAFE);
+        assertFalse("Reports with different water conditions should return false", r1.equals(r2));
+        r1.setWaterCondition(QualityCondition.SAFE);
+
+        r1.setVirusPPM(23);
+        assertFalse("Reports with different Virus PPMs should return false", r1.equals(r2));
+        r1.setVirusPPM(36);
+
+        r1.setContaminantPPM(98);
+        assertFalse("Reports with different Contaminant PPMs should return false", r1.equals(r2));
+        r1.setContaminantPPM(58);
 
     }
 
