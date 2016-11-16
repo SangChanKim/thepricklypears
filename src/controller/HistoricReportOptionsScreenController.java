@@ -112,6 +112,7 @@ public class HistoricReportOptionsScreenController {
      * sets the pseudo location
      * @param pseudoLocation the pseudo location
      */
+
     public void setPseudoLocation(Location pseudoLocation) {
         if (pseudoLocation != null) {
             latitudeTextField.setText("" + pseudoLocation.getLatitude());
