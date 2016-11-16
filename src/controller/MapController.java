@@ -67,9 +67,6 @@ public class MapController implements Initializable, MapComponentInitializedList
     @FXML
     private Button viewHistoricalReportButton;
 
-    private final int CENTER_LATITUDE = 34;
-    private final int CENTER_LONGITUDE = -88;
-
     /**
      * sets main application
      * @param main main application
@@ -90,6 +87,8 @@ public class MapController implements Initializable, MapComponentInitializedList
         selectedPin.setText(pinText);
 
         //set up the center location for the map
+        int CENTER_LONGITUDE = -88;
+        int CENTER_LATITUDE = 34;
         LatLong center = new LatLong(CENTER_LATITUDE, CENTER_LONGITUDE);
 
         options.center(center)

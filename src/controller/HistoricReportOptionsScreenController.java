@@ -28,10 +28,6 @@ public class HistoricReportOptionsScreenController {
 
     private MainFXApplication mainApplication;
 
-    private User currUser;
-
-    private Location pseudoLocation;
-
     /*  **********************
             References to the FXML widgets in the .fxml file
         */
@@ -124,7 +120,6 @@ public class HistoricReportOptionsScreenController {
      * @param auth current user
      */
     public void setUser(User auth) {
-        currUser = auth;
     }
 
     /**
@@ -132,7 +127,7 @@ public class HistoricReportOptionsScreenController {
      * @param pseudo the pseudo location
      */
     public void setPseudoLocation(Location pseudo) {
-        pseudoLocation = pseudo;
+        Location pseudoLocation = pseudo;
         if (pseudoLocation != null) {
             latitudeTextField.setText("" + pseudoLocation.getLatitude());
             longitudeTextField.setText("" + pseudoLocation.getLongitude());

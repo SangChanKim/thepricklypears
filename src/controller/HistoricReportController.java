@@ -26,8 +26,6 @@ public class HistoricReportController {
 
     private MainFXApplication mainApplication;
 
-    private Location loc;
-
     private List<WaterQualityReport> reports;
 
     final DateAxis310 xAxis = new DateAxis310();
@@ -63,8 +61,8 @@ public class HistoricReportController {
      */
     public void setDateAndData(Date startDate, Date endDate, List<WaterQualityReport> reports) {
         this.reports = reports;
-        this.loc = reports.get(0).getLocation();
-        yearAndLocationLabel.setText(this.loc.getTitle() + " from " + startDate + " to " + endDate);
+        Location loc = reports.get(0).getLocation();
+        yearAndLocationLabel.setText(loc.getTitle() + " from " + startDate + " to " + endDate);
     }
 
     /**
