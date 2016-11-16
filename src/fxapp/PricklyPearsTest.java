@@ -6,11 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.*;
 
 /**
  * Created by sang on 11/13/16.
