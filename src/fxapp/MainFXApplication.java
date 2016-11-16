@@ -342,7 +342,7 @@ public class MainFXApplication extends Application {
      * @return whether the new report was added or not
      */
     public boolean addWaterSourceReport(WaterSourceReport newReport) {
-        if (waterSourceReports.contains(newReport)) {
+        if (newReport == null || waterSourceReports.contains(newReport)) {
             return false;
         } else {
             waterSourceReports.add(newReport);
@@ -370,7 +370,7 @@ public class MainFXApplication extends Application {
      * @return whether the new quality report was added or not
      */
     public boolean addWaterQualityReport(WaterQualityReport newQualityReport) {
-        if (waterQualityReports.contains(newQualityReport)) {
+        if (newQualityReport == null || waterQualityReports.contains(newQualityReport)) {
             return false;
         } else {
             waterQualityReports.add(newQualityReport);

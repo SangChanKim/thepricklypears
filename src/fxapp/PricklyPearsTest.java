@@ -33,8 +33,18 @@ public class PricklyPearsTest {
         Location location2 = new Location(10.2, 15, "Georgia");
         assertTrue("Are the two locations equal?", location1.equals(location2));
 
-        Location location3 = new Location(10.2, 15, "George");
-        assertFalse("Are the two locations false?", location1.equals(location3));
+        Location location3 = new Location(10.2, 15, "george");
+        assertFalse("Are the two same locations with different titles false?", location1.equals(location3));
+
+        Location location4 = new Location(10.3, 15, "Georgia");
+        assertFalse("Are these two same locations with different latitudes not equal?", location1.equals(location4));
+
+        Location location5 = new Location(10.3, 16, "Georgia");
+        assertFalse("Are these two same locations with different logitudes not equal?", location1.equals(location5));
+
+        Location location6 = new Location(100, 500, "Florida");
+        assertFalse("Are these two completely different locations with different attributes not equal?",
+                location1.equals(location6));
 
         assertFalse("Location is null, so equals should be false", location1.equals(null));
     }
@@ -44,7 +54,7 @@ public class PricklyPearsTest {
      */
 
     @Before
-    private void populateUsers() {
+    public void populateUsers() {
         u1 = new User("vchen36", "asdf");
         u1.setEmailAddress("myEmail@email.com");
         u1.setHomeAddress("123 Cookies Lane");
